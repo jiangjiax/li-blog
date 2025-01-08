@@ -1,25 +1,25 @@
 ---
-date: 2025-01-07T00:00:00Z
+date: 2025-01-07
 description: 详细介绍 Stars 文章的元数据配置和使用方法
 series: Stars 教程
 seriesOrder: 2
 slug: metadata-guide
 tags:
-    - 教程
-    - Markdown
-    - Front Matter
+  - 教程
+  - Markdown
+  - Front Matter
 title: Stars 文章的元数据介绍
 verification:
     arweaveId: xyz789abc123def456
     nftContract: 0x760410d585110e149233919357E7C866bb51A841
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x63d55a601bfecfcaff2416b61daa27efae2d38c7cbf1d5aeb010d4d1bed55209
+    contentHash: bGP4K5KQZJvKe_JOqrD9u99WS8YDHlIuDjjfCuaGtUk
     nft:
         price: "0"
         maxSupply: 9999
         royaltyFee: 0
         onePerAddress: true
-        version: 1.0.0
+        version: "1.0.0"
         chainId: 11155111
 ---
 
@@ -87,3 +87,41 @@ tags:
 一个完整的文章配置示例：
 
 ```yaml
+---
+title: 如何使用 Stars 创建 Web3 博客
+date: 2025-01-07
+description: 详细介绍如何使用 Stars 搭建支持 Web3 功能的个人博客
+slug: how-to-create-web3-blog
+tags:
+  - Web3
+  - 教程
+  - Stars
+series: Stars 教程
+seriesOrder: 3
+draft: false
+verification:
+  arweaveId: xyz789abc123def456
+  nftContract: 0x760410d585110e149233919357E7C866bb51A841
+  author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
+  contentHash: 0x987654321fedcba
+  nft:
+    price: "0.001"
+    maxSupply: 100
+    royaltyFee: 1000
+    onePerAddress: true
+    version: "1.0.0"
+    chainId: 11155111
+---
+```
+
+## 常见问题
+
+1. **为什么我的文章没有显示？**
+   - 检查 `draft` 是否设置为 `true`
+   - 确认日期是否正确
+
+2. **如何修改已发布文章的 URL？**
+   - 更新 `slug` 字段
+
+3. **NFT 相关字段是必填的吗？**
+   - 不是必填的，只有在需要 NFT 功能时才需要配置
