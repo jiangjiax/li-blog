@@ -1,6 +1,6 @@
 {
-		"buildCommand": "stars build",
-		"outputDirectory": "public",
-		"framework": null,
-		"installCommand": "go install github.com/jiangjiax/stars/cmd/stars@latest"
-	}
+	"buildCommand": "stars build",
+	"outputDirectory": "public",
+	"framework": null,
+	"installCommand": "go install github.com/jiangjiax/stars/cmd/stars@latest"
+}
