@@ -304,7 +304,7 @@
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {{ range .Site.Author.RecommendedSeries }}
-            <a href="/series/{{ urlquery .Name }}" 
+            <a href="/series/{{ urlize .Name }}" 
                class="group bg-stars-secondary/80 backdrop-blur-sm rounded-xl p-5 
                       border border-stars-accent/10 hover:border-stars-accent/30 
                       transition-all duration-300">

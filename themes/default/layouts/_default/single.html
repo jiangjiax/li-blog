@@ -254,7 +254,7 @@
                             <div class="text-stars-muted text-sm mb-4">
                                 您正在阅读 <span class="text-stars-accent">{{ .Post.Series }}</span> 系列的第 {{ .Post.SeriesOrder }} 篇文章
                             </div>
-                            <a href="/series/{{ urlquery .Post.Series }}" 
+                            <a href="/series/{{ urlize .Post.Series }}" 
                                class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
                                       hover:border-stars-accent/30 hover:bg-stars-accent/5 
                                       transition-all duration-300">
@@ -271,7 +271,7 @@
                                 <div class="flex items-center gap-3">
                                     <h3 class="text-lg font-bold">{{ .Post.Series }}</h3>
                                 </div>
-                                <a href="/series/{{ urlquery .Post.Series }}" 
+                                <a href="/series/{{ urlize .Post.Series }}" 
                                    class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
                                           hover:border-stars-accent/30 hover:bg-stars-accent/5 
                                           transition-all duration-300">

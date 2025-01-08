@@ -21,7 +21,7 @@
                 </div>
                 {{ if $.Taxonomy }}
                     {{ range .Site.Series }}
-                        {{ if eq (urlquery $.Term) (urlquery .Name) }}
+                        {{ if eq (urlize $.Term) (urlize .Name) }}
                             {{ if .Description }}
                             <p class="series-desc mt-1.5 text-sm text-stars-muted/80">{{ .Description }}</p>
                             {{ end }}
@@ -47,10 +47,10 @@
 
                 <!-- 系列列表 -->
                 {{ range .Site.Series }}
-                <a href="/series/{{ urlquery .Name }}" 
-                   class="series-item group {{ if and (eq $.Taxonomy "series") (eq (urlquery $.Term) (urlquery .Name)) }}active{{ end }}">
+                <a href="/series/{{ urlize .Name }}" 
+                   class="series-item group {{ if and (eq $.Taxonomy "series") (eq (urlize $.Term) (urlize .Name)) }}active{{ end }}">
                     <div class="flex items-center gap-2">
-                        <i class="{{ if and (eq $.Taxonomy "series") (eq (urlquery $.Term) (urlquery .Name)) }}fas fa-check{{ else }}far fa-circle{{ end }} text-xs"></i>
+                        <i class="{{ if and (eq $.Taxonomy "series") (eq (urlize $.Term) (urlize .Name)) }}fas fa-check{{ else }}far fa-circle{{ end }} text-xs"></i>
                         <span class="font-medium">{{ .Name }}</span>
                         <span class="series-count">{{ index $.SeriesStats .Name }}</span>
                     </div>
@@ -106,7 +106,7 @@
                     <!-- 系列标识 -->
                     {{ if .Series }}
                     <div class="series-badge">
-                        <a href="/series/{{ urlquery .Series }}">
+                        <a href="/series/{{ urlize .Series }}">
                             <span class="series-badge-text">{{ .Series }}</span>
                             {{ if .SeriesOrder }}
                             <span class="series-badge-number">Part {{ .SeriesOrder }}</span>
