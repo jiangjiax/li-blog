@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <Channel>
+    <title>鲤哥的博客</title>
+    <link>/</link>
+    <description>最新文章更新</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 08 Jan 2025 20:38:47 +0800</lastBuildDate>
+    <item>
+      <title>Stars 入门</title>
+      <link>//welcome-to-stars</link>
+      <description>介绍 Stars 的基本使用方法</description>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//welcome-to-stars</guid>
+    </item>
+    <item>
+      <title>Stars 文章的元数据介绍</title>
+      <link>//metadata-guide</link>
+      <description>详细介绍 Stars 文章的元数据配置和使用方法</description>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//metadata-guide</guid>
+    </item>
+    <item>
+      <title>Stars Markdown 语法</title>
+      <link>//markdown-guide</link>
+      <description>详细介绍 Stars 支持的 Markdown 语法和使用方法</description>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//markdown-guide</guid>
+    </item>
+    <item>
+      <title>Stars 主题</title>
+      <link>//theme-guide</link>
+      <description>详细介绍 Stars 主题系统的使用方法和自定义主题开发指南</description>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//theme-guide</guid>
+    </item>
+  </Channel>
+</rss>

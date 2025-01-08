@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            Stars 主题 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="蒋鲤:热衷于Web3和开源项目的软件工程师，独立开发爱好者。">
+    
+    <meta name="keywords" content="Web3, 区块链, 技术博客, 个人网站">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="//feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">Stars 教程</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 4
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    Stars 主题
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    详细介绍 Stars 主题系统的使用方法和自定义主题开发指南
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-01-07
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            2 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            教程
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            主题
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            定制化
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-b border-stars-accent/10
+                                bg-gradient-to-r from-stars-accent/5 to-transparent">
+                        <div class="flex items-center gap-3 text-stars-accent">
+                            <i class="fas fa-shield-check"></i>
+                            <span class="text-sm">此文章已上链验证</span>
+                        </div>
+                        <button onclick="scrollToVerification()" 
+                                class="px-4 py-2 rounded-lg bg-stars-accent/10 text-stars-accent 
+                                       hover:bg-stars-accent/20 transition-all duration-300">
+                            <span class="flex items-center gap-2">
+                                <span>查看 NFT 信息</span>
+                            </span>
+                        </button>
+                    </div>
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <p>Stars 提供了灵活的主题系统，让你可以轻松定制网站的外观。本文将介绍如何使用和开发 Stars 主题。</p>
+<h2 id="heading">主题基础</h2>
+<h3 id="heading-1">目录结构</h3>
+<p>一个典型的 Stars 主题目录结构如下：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span>themes/default/
+</span></span><span style="display:flex;"><span>├── layouts/         # 布局模板
+</span></span><span style="display:flex;"><span>│   ├── _default/    # 默认模板
+</span></span><span style="display:flex;"><span>│   │   ├── baseof.html
+</span></span><span style="display:flex;"><span>│   │   ├── list.html
+</span></span><span style="display:flex;"><span>│   │   └── single.html
+</span></span><span style="display:flex;"><span>│   │   └── tags.html
+</span></span><span style="display:flex;"><span>│   └── components/  # 可复用组件
+</span></span><span style="display:flex;"><span>│   └── index.html   # 首页模板
+</span></span><span style="display:flex;"><span>├── static/          # 静态资源
+</span></span><span style="display:flex;"><span>│   ├── css/        # 样式文件
+</span></span><span style="display:flex;"><span>│   ├── js/         # 脚本文件
+</span></span><span style="display:flex;"><span>│   └── images/     # 图片资源
+</span></span><span style="display:flex;"><span>│   └── abi/        # abi 文件
+</span></span><span style="display:flex;"><span>└── theme.yaml       # 主题配置
+</span></span><span style="display:flex;"><span>├── package.json     # 依赖管理
+</span></span><span style="display:flex;"><span>├── postcss.config.js # PostCSS 配置
+</span></span><span style="display:flex;"><span>├── tailwind.config.js # Tailwind 配置
+</span></span><span style="display:flex;"><span>└── webpack.config.js  # Webpack 配置
+</span></span></code></pre><h3 id="heading-2">切换主题</h3>
+<p>有两种方式可以切换主题：</p>
+<ol>
+<li><strong>通过命令行</strong>：</li>
+</ol>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e"># 列出已安装的主题</span>
+</span></span><span style="display:flex;"><span>stars theme list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换主题</span>
+</span></span><span style="display:flex;"><span>stars theme use &lt;theme-name&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装新主题</span>
+</span></span><span style="display:flex;"><span>stars theme install &lt;theme-repo&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建新主题</span>
+</span></span><span style="display:flex;"><span>stars theme new &lt;theme-name&gt;
+</span></span></code></pre><ol start="2">
+<li><strong>直接修改配置文件</strong>：</li>
+</ol>
+<p>在项目根目录的 <code>config.yaml</code> 中修改 theme 字段：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e"># config.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;My Blog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;A blog powered by Stars&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">baseURL</span>: <span style="color:#e6db74">&#34;http://localhost:1313&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">theme</span>: <span style="color:#e6db74">&#34;default&#34;</span>  <span style="color:#75715e"># 将 &#34;default&#34; 改为你想使用的主题名称</span>
+</span></span></code></pre><blockquote>
+<p>注意：theme 的值必须与 themes 目录下的主题文件夹名称相对应。</p>
+</blockquote>
+<h2 id="heading-3">模板系统</h2>
+<p>Stars 使用 Go 的模板引擎，支持强大的模板功能。</p>
+<h3 id="heading-4">基础模板</h3>
+<p><code>layouts/_default/baseof.html</code> 是最基础的模板：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zh-CN&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;{{ .Title }} - {{ .Site.Title }}&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ partial &#34;head.html&#34; . }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ partial &#34;header.html&#34; . }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">main</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ block &#34;main&#34; . }}{{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">main</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ partial &#34;footer.html&#34; . }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre><h3 id="heading-5">页面类型</h3>
+<p>Stars 支持以下页面类型：</p>
+<ol>
+<li>
+<p><strong>首页</strong> (<code>index.html</code>)</p>
+<ul>
+<li>网站首页模板</li>
+<li>可以展示最新文章、特色内容等</li>
+</ul>
+</li>
+<li>
+<p><strong>列表页</strong> (<code>_default/list.html</code>)</p>
+<ul>
+<li>文章列表页面</li>
+<li>支持分类、标签筛选</li>
+</ul>
+</li>
+<li>
+<p><strong>文章页</strong> (<code>_default/single.html</code>)</p>
+<ul>
+<li>单篇文章页面</li>
+<li>显示文章内容和元数据</li>
+</ul>
+</li>
+<li>
+<p><strong>标签页</strong> (<code>tags/list.html</code>)</p>
+<ul>
+<li>标签云页面</li>
+<li>展示所有标签和统计</li>
+</ul>
+</li>
+</ol>
+<h2 id="heading-6">资源处理</h2>
+<h3 id="css-">CSS 样式</h3>
+<p>Stars 使用 Tailwind CSS 作为默认样式框架。</p>
+<h3 id="javascript">JavaScript</h3>
+<p>支持添加自定义脚本。</p>
+<h2 id="heading-7">开发自定义主题</h2>
+<h3 id="1-">1. 创建主题</h3>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span>stars theme new my-theme
+</span></span></code></pre><p>这将创建一个基本的主题结构。</p>
+<h3 id="2-">2. 主题配置</h3>
+<p>在 <code>theme.yaml</code> 中定义主题信息：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;My Theme&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">author</span>: <span style="color:#e6db74">&#34;Your Name&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;A beautiful Stars theme&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 主题选项</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">colorScheme</span>: <span style="color:#e6db74">&#34;light&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">showAuthor</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enableComments</span>: <span style="color:#66d9ef">false</span>
+</span></span></code></pre><h3 id="3-">3. 模板变量</h3>
+<p>可用的主要变量：</p>
+<ul>
+<li><code>.Site</code>: 网站配置信息</li>
+<li><code>.Title</code>: 页面标题</li>
+<li><code>.Content</code>: 页面内容</li>
+<li><code>.Posts</code>: 文章列表</li>
+<li><code>.Series</code>: 系列信息</li>
+<li><code>.Tags</code>: 标签信息</li>
+</ul>
+<h3 id="4-web3-">4. Web3 集成</h3>
+<p>主题可以集成 Web3 功能：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- NFT 铸造按钮 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mint-nft&#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">data-contract</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Verification.NftContract }}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">data-price</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Verification.Nft.Price }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    铸造 NFT
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 内容验证信息 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verification-info&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;Content Hash: {{ .Verification.ContentHash }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;Arweave ID: {{ .Verification.ArweaveId }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre><h2 id="heading-8">最佳实践</h2>
+<ol>
+<li>
+<p><strong>性能优化</strong></p>
+<ul>
+<li>优化图片资源</li>
+<li>合理使用缓存</li>
+</ul>
+</li>
+<li>
+<p><strong>可维护性</strong></p>
+<ul>
+<li>添加必要的注释</li>
+<li>使用版本控制</li>
+</ul>
+</li>
+<li>
+<p><strong>用户体验</strong></p>
+<ul>
+<li>支持响应式设计</li>
+<li>优化加载性能</li>
+</ul>
+</li>
+</ol>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0xaaad4efde07973765c4cb54a06c044cbc99dcb2952af14df5ad5d2d3a370aa43')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0xaaad4efde07973765c4cb54a06c044cbc99dcb2952af14df5ad5d2d3a370aa43</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+                <div id="verification" class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    <div class="p-6 lg:p-8 border-b border-stars-accent/10 bg-gradient-to-br from-stars-accent/5 to-transparent">
+                        <div class="flex items-center gap-3 text-stars-accent mb-2">
+                            <h3 class="text-xl font-bold">链上验证</h3>
+                        </div>
+                        <p class="text-stars-muted text-sm leading-relaxed">
+                            此文章已被永久存储在区块链上，并由其创作者进行了签名验证。您可以查看相关证明，也可以将其铸造为 NFT 收藏。
+                        </p>
+                    </div>
+
+                    
+                    <div class="p-6 lg:p-8">
+                        
+                        <div class="grid gap-4 sm:grid-cols-2 mb-8">
+                            
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">创作者地址</div>
+                                <code class="text-stars-accent break-all text-sm">0x16572b97410200e79AB6c9423F8d9778F0Fb9C54</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">Arweave 交易</div>
+                                <code class="text-stars-accent break-all text-sm">a_YLv8-4tzPWY0jn7ZcYpoAtp2CI5Biux0p2vIgV9pg</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">NFT 合约</div>
+                                <code class="text-stars-accent break-all text-sm">0x760410d585110e149233919357E7C866bb51A841</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">内容哈希</div>
+                                <code class="text-stars-accent break-all text-sm">0xaaad4efde07973765c4cb54a06c044cbc99dcb2952af14df5ad5d2d3a370aa43</code>
+                            </div>
+                            
+                        </div>
+
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold text-stars-accent mb-4">NFT 详情</h4>
+                            <div class="grid gap-4 sm:grid-cols-3">
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">铸造价格</div>
+                                    <div class="text-stars-accent font-mono">0 ETH</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">最大供应量</div>
+                                    <div class="text-stars-accent font-mono">9999</div>
+                                </div>
+                                
+
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">链</div>
+                                    <div class="text-stars-accent font-mono">11155111</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">合约版本</div>
+                                    <div class="text-stars-accent font-mono">v1.0.0</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">每地址限制</div>
+                                    <div class="text-stars-accent font-mono">1 枚</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        
+                        <div class="flex justify-center">
+                            <button id="mintButton2" onclick="mintNFT()" 
+                                    class="px-6 py-3 rounded-xl bg-stars-accent/10 text-stars-accent 
+                                           hover:bg-stars-accent/20 transition-all duration-300">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-cube"></i>
+                                    <span id="mintButtonText2">铸造 NFT</span>
+                                </span>
+                                <span id="mintSpinner2" class="hidden">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">Stars 教程</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">Stars 教程</span> 系列的第 4 篇文章
+                            </div>
+                            <a href="/series/Stars&#43;%E6%95%99%E7%A8%8B" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">Stars 教程</h3>
+                                </div>
+                                <a href="/series/Stars&#43;%E6%95%99%E7%A8%8B" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">Stars 教程</span> 系列的第 4 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24 pt-[5.5rem]">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="主题基础"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    主题基础
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="目录结构"
+           class="toc-link toc-link-child"
+           data-level="3">
+            目录结构
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-2" 
+           title="切换主题"
+           class="toc-link toc-link-child"
+           data-level="3">
+            切换主题
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="模板系统"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    模板系统
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-4" 
+           title="基础模板"
+           class="toc-link toc-link-child"
+           data-level="3">
+            基础模板
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-5" 
+           title="页面类型"
+           class="toc-link toc-link-child"
+           data-level="3">
+            页面类型
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-6" 
+                   title="资源处理"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    资源处理
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#css-" 
+           title="CSS 样式"
+           class="toc-link toc-link-child"
+           data-level="3">
+            CSS 样式
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#javascript" 
+           title="JavaScript"
+           class="toc-link toc-link-child"
+           data-level="3">
+            JavaScript
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-7" 
+                   title="开发自定义主题"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    开发自定义主题
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 创建主题"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 创建主题
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 主题配置"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 主题配置
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 模板变量"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 模板变量
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-web3-" 
+           title="4. Web3 集成"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. Web3 集成
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-8" 
+                   title="最佳实践"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    最佳实践
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="主题基础"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    主题基础
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="目录结构"
+           class="toc-link toc-link-child"
+           data-level="3">
+            目录结构
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-2" 
+           title="切换主题"
+           class="toc-link toc-link-child"
+           data-level="3">
+            切换主题
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="模板系统"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    模板系统
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-4" 
+           title="基础模板"
+           class="toc-link toc-link-child"
+           data-level="3">
+            基础模板
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-5" 
+           title="页面类型"
+           class="toc-link toc-link-child"
+           data-level="3">
+            页面类型
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-6" 
+                   title="资源处理"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    资源处理
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#css-" 
+           title="CSS 样式"
+           class="toc-link toc-link-child"
+           data-level="3">
+            CSS 样式
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#javascript" 
+           title="JavaScript"
+           class="toc-link toc-link-child"
+           data-level="3">
+            JavaScript
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-7" 
+                   title="开发自定义主题"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    开发自定义主题
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 创建主题"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 创建主题
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 主题配置"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 主题配置
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 模板变量"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 模板变量
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-web3-" 
+           title="4. Web3 集成"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. Web3 集成
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-8" 
+                   title="最佳实践"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    最佳实践
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;a_YLv8-4tzPWY0jn7ZcYpoAtp2CI5Biux0p2vIgV9pg&#34;,&#34;NftContract&#34;:&#34;0x760410d585110e149233919357E7C866bb51A841&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0xaaad4efde07973765c4cb54a06c044cbc99dcb2952af14df5ad5d2d3a370aa43&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:9999,&#34;RoyaltyFee&#34;:0,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:11155111}}"
+         data-title="Stars 主题"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/yourusername/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.1d42d87051d9c5b7eaf9.bundle.js"></script>
+    
+</body>
+</html> 
