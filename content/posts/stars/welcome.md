@@ -10,7 +10,7 @@ tags:
 title: Stars 入门
 verification:
     arweaveId: q98K4NSlJy2pEMx9bFMxXYBcStUVEjfKIHnviQkpHjE
-    nftContract: 0x760410d585110e149233919357E7C866bb51A841
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x4027a37c4c657142a01c9e45af6064d9255d4a4d31149be46dccb6ff6af2068c
     nft:
@@ -19,7 +19,7 @@ verification:
         royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 11155111
+        chainId: 41
 ---
 
 Stars 是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。本文将指导你从零开始使用 Stars 创建你的个人网站。

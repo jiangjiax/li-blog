@@ -11,7 +11,7 @@ tags:
 title: Stars 主题
 verification:
     arweaveId: a_YLv8-4tzPWY0jn7ZcYpoAtp2CI5Biux0p2vIgV9pg
-    nftContract: 0x760410d585110e149233919357E7C866bb51A841
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0xaaad4efde07973765c4cb54a06c044cbc99dcb2952af14df5ad5d2d3a370aa43
     nft:
@@ -20,7 +20,7 @@ verification:
         royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 11155111
+        chainId: 41
 ---
 
 Stars 提供了灵活的主题系统，让你可以轻松定制网站的外观。本文将介绍如何使用和开发 Stars 主题。

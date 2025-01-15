@@ -1,26 +1,26 @@
 ---
-date: 2025-01-07
+date: 2025-01-07T00:00:00Z
 description: 详细介绍 Stars 文章的元数据配置和使用方法
 series: Stars 教程
 seriesOrder: 2
 slug: metadata-guide
 tags:
-  - 教程
-  - Markdown
-  - Front Matter
+    - 教程
+    - Markdown
+    - Front Matter
 title: Stars 文章的元数据介绍
 verification:
     arweaveId: xyz789abc123def456
-    nftContract: 0x760410d585110e149233919357E7C866bb51A841
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: bGP4K5KQZJvKe_JOqrD9u99WS8YDHlIuDjjfCuaGtUk
+    contentHash: 0x1e730630c4e7e59e6a99f21aa25bf0acb40a1753dd209cb4bdc08144a2787a53
     nft:
         price: "0"
         maxSupply: 9999
         royaltyFee: 0
         onePerAddress: true
-        version: "1.0.0"
-        chainId: 11155111
+        version: 1.0.0
+        chainId: 41
 ---
 
 Stars 在头部定义文章的元数据。本文将详细介绍每个元数据字段的含义和使用方法。
@@ -67,7 +67,7 @@ tags:
 使用 `verification` 字段配置区块链相关信息：
 
 - `arweaveId`: Arweave 存储 ID，你也可以放置别的存储方ID，但我建议使用去中心化的基础设施，比如[ArDrive](https://ardrive.io/)
-- `nftContract`: NFT 合约地址，你可以在[这里](https://github.com/jiangjiax/stars/blob/main/CONTRACTS.md)查看当前支持的智能合约地址
+- `nftContract`: NFT 合约地址，你可以在[这里](https://github.com/jiangjiax/stars/blob/main/CONTRACTS.md)查看当前我们部署的智能合约地址，我们部署了多个区块链网路的地址，你也可以修改合约代码并部署得到你自己的合约地址
 - `author`: 作者钱包地址
 - `contentHash`: 文章内容哈希
 
@@ -87,41 +87,3 @@ tags:
 一个完整的文章配置示例：
 
 ```yaml
----
-title: 如何使用 Stars 创建 Web3 博客
-date: 2025-01-07
-description: 详细介绍如何使用 Stars 搭建支持 Web3 功能的个人博客
-slug: how-to-create-web3-blog
-tags:
-  - Web3
-  - 教程
-  - Stars
-series: Stars 教程
-seriesOrder: 3
-draft: false
-verification:
-  arweaveId: xyz789abc123def456
-  nftContract: 0x760410d585110e149233919357E7C866bb51A841
-  author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-  contentHash: 0x987654321fedcba
-  nft:
-    price: "0.001"
-    maxSupply: 100
-    royaltyFee: 1000
-    onePerAddress: true
-    version: "1.0.0"
-    chainId: 11155111
----
-```
-
-## 常见问题
-
-1. **为什么我的文章没有显示？**
-   - 检查 `draft` 是否设置为 `true`
-   - 确认日期是否正确
-
-2. **如何修改已发布文章的 URL？**
-   - 更新 `slug` 字段
-
-3. **NFT 相关字段是必填的吗？**
-   - 不是必填的，只有在需要 NFT 功能时才需要配置

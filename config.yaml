@@ -24,7 +24,7 @@ series:
 
 # 个人信息
 author:
-  name: "蒋鲤"  # 姓名
+  name: "鲤哥"  # 姓名
   title: "Software Engineer"  # 职位
   avatar: "/static/images/avatar.jpg"  # 头像
   bio: "热衷于Web3和开源项目的软件工程师，独立开发爱好者。"  # 个人简介
@@ -114,9 +114,10 @@ author:
       description: "Stars(繁星)是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。它能帮助你快速创建一个现代化的个人网站，并提供 Web3 集成功能。本项目旨在为创作者提供一个去中心化的内容发布平台。"
       url: "https://github.com/jiangjiax/stars"
       contributions:
-        - "Stars 项目的开创者"
-        - "Stars 项目的主要开发者"
-      impact: "Stars为创作者提供了一种新的内容发布方式"
+        - "参与项目的设计和开发"
+        - "参与项目的文档编写"
+        - "参与项目的测试和部署"
+      impact: "负责 Stars 项目的创建和主要开发工作。"
 
   # 教育背景
   education:

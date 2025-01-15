@@ -20311,28 +20311,25 @@ async function mintNFT() {
         console.error('Minting failed:', error);
         let message = '铸造失败，请重试';
         
-        // 声明在这里，以便后面的错误处理也能访问
-        let contractABI;
-        let iface;
-        
         if (error.code === 4001) {
             message = '用户取消了操作';
-        } else if (error.code === 'UNPREDICTABLE_GAS_LIMIT') {
+        } else if (error.code === 'UNPREDICTABLE_GAS_LIMIT' || error.error) {
             try {
                 // 加载 ABI
-                contractABI = await loadContractABI();
-                // 获取合约 interface
-                iface = new ethers__WEBPACK_IMPORTED_MODULE_3__/* .Interface */ .KA(contractABI);
-                // 获取错误数据
-                const errorData = error.error?.data || error.data;
+                const contractABI = await loadContractABI();
+                const iface = new ethers__WEBPACK_IMPORTED_MODULE_3__/* .Interface */ .KA(contractABI);
+                
+                // 获取错误数据 - 处理多层嵌套的错误结构
+                let errorData = error.error?.data?.data || // 处理 RPC 错误
+                              error.error?.error?.data?.data || // 处理 Provider 错误
+                              error.data?.data || // 直接错误数据
+                              error.error?.data || // 其他可能的错误结构
+                              error.data;
+                
                 if (errorData) {
-                    // 解码错误
                     const decodedError = iface.parseError(errorData);
                     // 根据错误名称判断
                     switch (decodedError.name) {
-                        case 'RoyaltyFeeTooHigh':
-                            message = '版税设置过高（不能超过100%）';
-                            break;
                         case 'AlreadyMinted':
                             message = '此文章已被铸造';
                             break;
@@ -20354,26 +20351,19 @@ async function mintNFT() {
                         case 'NameEmpty':
                             message = '文章标题不能为空';
                             break;
+                        case 'RoyaltyFeeTooHigh':
+                            message = '版税设置过高（不能超过100%）';
+                            break;
                         default:
                             message = `合约错误: ${decodedError.name}`;
                     }
                 }
             } catch (decodeError) {
                 console.error('Failed to decode error:', decodeError);
-                message = '合约调用失败，请检查参数';
             }
         } else if (error.message.includes('insufficient funds')) {
             message = '钱包余额不足';
         }
-
-        // 打印详细错误信息用于调试
-        // console.log('Error details:', {
-        //     code: error.code,
-        //     errorData: error.error?.data,
-        //     decodedError: error.error?.data && iface ? iface.parseError(error.error.data) : null,
-        //     message: error.message,
-        //     params: error.transaction
-        // });
 
         window.showToast(message, 8000, 'error');
         setLoading(false);
@@ -20518,37 +20508,6 @@ window.showToast = function(message, duration = 5000, type = 'success') {
     }, duration);
 };
 
-// 图片查看功能
-function initImageViewer() {
-    // 显示图片模态框
-    window.showImageModal = function(imageSrc) {
-        if (!imageSrc) return;
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        if (!modal || !modalImage) return;
-        
-        modalImage.src = imageSrc;
-        modal.classList.remove('hidden');
-    }
-
-    // 关闭模态框
-    window.closeImageModal = function() {
-        const modal = document.getElementById('imageModal');
-        if (!modal) return;
-        modal.classList.add('hidden');
-    }
-
-    // 点击模态框背景关闭
-    const modal = document.getElementById('imageModal');
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeImageModal();
-            }
-        });
-    }
-}
-
 // 星空背景效果
 function initStars() {
     const container = document.getElementById('stars-container');
@@ -20618,7 +20577,6 @@ function initProfile() {
 // 初始化所有功能
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded');
-    initImageViewer();  // 初始化图片查看功能
     initProfile();     // 初始化个人资料功能
     initStars();       // 初始化星空背景
 });

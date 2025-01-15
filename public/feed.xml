@@ -5,7 +5,14 @@
     <link>/</link>
     <description>最新文章更新</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 08 Jan 2025 21:30:02 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2025 20:06:24 +0800</lastBuildDate>
+    <item>
+      <title>首先，Web3是什么？</title>
+      <link>//web3-what</link>
+      <description>Web3是什么？它是什么时候诞生的？它是如何工作的？这些问题将会在本文中得到解答。</description>
+      <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//web3-what</guid>
+    </item>
     <item>
       <title>Stars 入门</title>
       <link>//welcome-to-stars</link>
