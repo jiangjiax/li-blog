@@ -11,16 +11,16 @@ tags:
 title: Stars 文章的元数据介绍
 verification:
     arweaveId: xyz789abc123def456
-    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
+    nftContract: 0x5c83f2287833F567b1D80D7B981084eb5CaeF445
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0xa65c0118ec13d91a1506e15938ebe61e0fbf039742ffaea84397b0d1ba72b323
+    contentHash: 0x3cd975195f0906db771fb2fbe8ed26bbe5e2a56933093418caf94763cce1d948
     nft:
-        price: "0"
+        price: "0.000001"
         maxSupply: 9999
         royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 41
+        chainId: 11155111
 ---
 
 Stars 在头部定义文章的元数据。本文将详细介绍每个元数据字段的含义和使用方法。
@@ -68,7 +68,7 @@ tags:
 
 - `arweaveId`: Arweave 存储 ID，你也可以放置别的存储方ID，但我建议使用去中心化的基础设施，比如[ArDrive](https://ardrive.io/)
 - `nftContract`: NFT 合约地址，你可以在[这里](https://github.com/jiangjiax/stars/blob/main/CONTRACTS.md)查看当前我们部署的智能合约地址，我们部署了多个区块链网路的地址，你也可以修改合约代码并部署得到你自己的合约地址
-- `author`: 作者Wallet Address
+- `author`: 作者钱包地址
 - `contentHash`: 文章内容哈希
 
 ### NFT 配置
@@ -87,3 +87,39 @@ tags:
 一个完整的文章配置示例：
 
 ```yaml
+title: 如何使用 Stars 创建 Web3 博客
+date: 2025-01-07
+description: 详细介绍如何使用 Stars 搭建支持 Web3 功能的个人博客
+slug: how-to-create-web3-blog
+tags:
+  - Web3
+  - 教程
+  - Stars
+series: Stars 教程
+seriesOrder: 3
+draft: false
+verification:
+  arweaveId: xyz789abc123def456
+  nftContract: 0x5c83f2287833F567b1D80D7B981084eb5CaeF445
+  author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
+  contentHash: 0x987654321fedcba
+  nft:
+    price: "0.001"
+    maxSupply: 100
+    royaltyFee: 1000
+    onePerAddress: true
+    version: "1.0.0"
+    chainId: 11155111
+```
+
+## 常见问题
+
+1. **为什么我的文章没有显示？**
+   - 检查 `draft` 是否设置为 `true`
+   - 确认日期是否正确
+
+2. **如何修改已发布文章的 URL？**
+   - 更新 `slug` 字段
+
+3. **NFT 相关字段是必填的吗？**
+   - 不是必填的，只有在需要 NFT 功能时才需要配置
