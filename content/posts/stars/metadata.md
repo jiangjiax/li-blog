@@ -13,7 +13,7 @@ verification:
     arweaveId: xyz789abc123def456
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x1e730630c4e7e59e6a99f21aa25bf0acb40a1753dd209cb4bdc08144a2787a53
+    contentHash: 0xa65c0118ec13d91a1506e15938ebe61e0fbf039742ffaea84397b0d1ba72b323
     nft:
         price: "0"
         maxSupply: 9999
@@ -68,7 +68,7 @@ tags:
 
 - `arweaveId`: Arweave 存储 ID，你也可以放置别的存储方ID，但我建议使用去中心化的基础设施，比如[ArDrive](https://ardrive.io/)
 - `nftContract`: NFT 合约地址，你可以在[这里](https://github.com/jiangjiax/stars/blob/main/CONTRACTS.md)查看当前我们部署的智能合约地址，我们部署了多个区块链网路的地址，你也可以修改合约代码并部署得到你自己的合约地址
-- `author`: 作者钱包地址
+- `author`: 作者Wallet Address
 - `contentHash`: 文章内容哈希
 
 ### NFT 配置

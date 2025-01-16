@@ -24,14 +24,14 @@ series:
 
 # 个人信息
 author:
-  name: "鲤哥"  # 姓名
+  name: "蒋鲤"  # 姓名
   title: "Software Engineer"  # 职位
   avatar: "/static/images/avatar.jpg"  # 头像
-  bio: "热衷于Web3和开源项目的软件工程师，独立开发爱好者。"  # 个人简介
+  bio: "A software engineer passionate about Web3 and open-source projects, and an enthusiast of independent development."  # 个人简介
   location: "中国，杭州" # 所在地
   github: "jiangjiax" # 你的 GitHub 账号用户名
   status: "正在寻找机会"  # 状态
-  walletAddress: "0x16572b97410200e79AB6c9423F8d9778F0Fb9C54" # 你的以太坊钱包地址
+  walletAddress: "0x16572b97410200e79AB6c9423F8d9778F0Fb9C54" # 你的以太坊Wallet Address
   
   # 技术栈
   skills:
@@ -150,7 +150,7 @@ author:
     #   issuer: "The Linux Foundation"
     #   date: "2022.12"
 
-  # 联系方式
+  # Contact Information
   contact:
     email: "jiangjiaxingogogo@gmail.com"   
     wechat: "kaopujjx"        
