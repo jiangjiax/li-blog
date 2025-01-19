@@ -160,7 +160,7 @@ author:
 
   # 推荐的文章系列
   recommendedSeries:
-    - name: "Web3 探索"
+    - name: "探索Web3世界"
       description: "探索 Web3 的技术和应用，从基础概念到实践应用"
 
 # 邮件订阅设置
