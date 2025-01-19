@@ -20154,8 +20154,9 @@ function getArticleData() {
 // 加载 ABI
 async function loadContractABI() {
     try {
-        const staticPath = document.querySelector('meta[name="static-path"]').content;
-        const response = await fetch(`${staticPath}/abi/ArticleNFT.json`);
+        // 使用资源哈希版本的文件名
+        const abiPath = document.querySelector('meta[name="abi-path"]').content;
+        const response = await fetch(`${abiPath}`);
         const data = await response.json();
         return data.abi;
     } catch (error) {
@@ -20186,7 +20187,7 @@ async function mintNFT() {
 
     // 检是否安装了 MetaMask
     if (typeof window.ethereum === 'undefined') {
-        window.showToast('请先安装并登录 MetaMask 钱包', 'error');
+        window.showToast('请先安装并登录 MetaMask 钱包', 8000, 'error');
         return;
     }
 
@@ -20247,7 +20248,8 @@ async function mintNFT() {
         const balance = await provider.getBalance(userAddress);
         const price = ethers__WEBPACK_IMPORTED_MODULE_1__/* .parseEther */ .g5(verification.NFT.Price);
         if (balance.lt(price.mul(2))) { // 确保有足够余额支付 gas
-            window.showToast('钱包余额不足，请确保有足够的测试币（建议至少 0.002 ETH）', 8000, 'error');
+            window.showToast('钱包余额不足，请确保有足够的测试币（建议至少 0.002 ' + 
+                verification.NFT.TokenSymbol + '）', 8000, 'error');
             return;
         }
 
@@ -20316,7 +20318,6 @@ async function mintNFT() {
         } else if (error.code === 'UNPREDICTABLE_GAS_LIMIT' || error.error) {
             try {
                 // 加载 ABI
-                const contractABI = await loadContractABI();
                 const iface = new ethers__WEBPACK_IMPORTED_MODULE_3__/* .Interface */ .KA(contractABI);
                 
                 // 获取错误数据 - 处理多层嵌套的错误结构

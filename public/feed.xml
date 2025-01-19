@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <Channel>
-    <title>鲤哥的博客</title>
+    <title>my-blog</title>
     <link>/</link>
     <description>最新文章更新</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 17 Jan 2025 04:03:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2025 14:50:58 +0800</lastBuildDate>
     <item>
       <title>首先，Web3是什么？</title>
       <link>//web3-what</link>
