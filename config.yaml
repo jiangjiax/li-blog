@@ -1,5 +1,5 @@
-title: "my-blog"  # 博客标题
-description: "A Stars Web3 blog"  # 网站描述
+title: "鲤哥的博客"  # 博客标题
+description: "鲤哥的个人技术博客，分享技术、生活、读书心得"  # 网站描述
 baseURL: "/"  # 网站根路径
 theme: "default"  # 主题名称
 
@@ -11,160 +11,178 @@ seo:
 series:
   - name: "Web3 探索"
     description: "探索 Web3 的技术和应用，从基础概念到实践应用"
-    order: 2
+    order: 1
   - name: "人类升级计划"
     description: "探讨认知提升、效率优化和个人成长"
-    order: 3
+    order: 2
   - name: "Stars 教程"
     description: "使用 Stars 框架的教程"
-    order: 1
+    order: 99
   - name: "Go语言教程"
-    description: "使用 Stars 框架的教程"
-    order: 6
+    description: "Go 语言相关的教程"
+    order: 3
 
 # 个人信息
 author:
-  name: "Your Name"  # 姓名
-  title: "Software Engineer"  # 职位
+  name: "蒋鲤"  # 姓名
+  title: "Full-Stack web developer, indie hacker."  # 职位
   avatar: "/static/images/avatar.jpg"  # 头像
-  bio: "A developer passionate about Web3 and cloud-native technologies, building the decentralized future."  # 个人简介
-  location: "中国，深圳" # 所在地
-  github: "" # 你的 GitHub 账号用户名
+  bio: "I’m Li Jiang, a software engineer based in Hangzhou, China. Passionate about Web3 and open-source projects, I am also an enthusiast of independent development. I love coding and traveling, and my passion lies in building something interesting and useful."  # 个人简介
+  location: "中国，杭州" # 所在地
+  github: "jiangjiax" # 你的 GitHub 账号用户名
   status: "正在寻找机会"  # 状态
-  walletAddress: "0x..." # 你的以太坊钱包地址
+  walletAddress: "0x16572b97410200e79AB6c9423F8d9778F0Fb9C54" # 你的以太坊Wallet Address
   
   # 技术栈
   skills:
     - name: "Go"
-      level: "精通"
-      percentage: 90
-    - name: "Rust"
       level: "熟练"
-      percentage: 75
-    - name: "Web3"
-      level: "精通"
+      percentage: 95
+    - name: "Rust"
+      level: "入门"
+      percentage: 50
+    - name: "Solidity"
+      level: "熟练"
+      percentage: 80
+    - name: "hardhat"
+      level: "熟练"
+      percentage: 80
+    - name: "JS/HTML/CSS"
+      level: "熟练"
       percentage: 90
-    - name: "云原生"
-      level: "精通"
-      percentage: 85
+    - name: "Kafka"
+      level: "熟练"
+      percentage: 80
+
 
   # 项目展示
   projects:
-    - name: "Stars 博客引擎"
-      description: "基于 Go 和 Web3 构建的去中心化博客平台"
-      url: "https://github.com/yourusername/stars"
-      website: "https://stars-blog.com"
-      image: "/static/images/avatar.jpg"
+    - name: "Stars"
+      description: "Stars(繁星)是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。它能帮助你快速创建一个现代化的个人网站，并提供 Web3 集成功能。本项目旨在为创作者提供一个去中心化的内容发布平台。"
+      url: "https://github.com/jiangjiax/stars"
+      # website: "https://stars-blog.com"
+      image: "/static/images/stars.jpeg"
       highlights:
         - "使用 Go 和现代 Web 技术构建"
-        - "集成 IPFS 实现去中心化存储"
-        - "支持 Web3 钱包登录"
-      tags: ["Go", "Web3", "IPFS"]
-      stars: 128
-      forks: 23
+        - "支持 Web3 集成，提供去中心化内容发布"
+        - "支持 Markdown 解析"
+      tags: ["Go", "Web3", "网站生成器"]
+      stars: 0
+      forks: 0
     
-    - name: "量子 DeFi 协议"
-      description: "具有高级交易功能的下一代 DeFi 协议"
-      url: "https://github.com/yourusername/quantum-defi"
-      image: "/static/images/avatar.jpg"
+    - name: "知闻AI"
+      description: "知闻AI使用AI技术进行新闻内容的自动分类、评估每天超过 2000 条的最新新闻，选择最相关和最重要的信息，为每篇文章生成简明摘要，并将这些策划的文章汇编成相应的日报或周刊。"
+      url: "https://github.com/jiangjiax/informedainews.com"
+      website: "https://informedainews.com/"
+      image: "/static/images/zhiwenAI.jpeg"
       highlights:
-        - "使用 Solidity 编写智能合约"
-        - "自动做市商机制"
-        - "跨链集成支持"
-      tags: ["Solidity", "DeFi", "Web3"]
-      stars: 256
-      forks: 45
+        - "使用 AI 技术进行新闻内容自动分类与摘要生成"
+        - "每天超过 2000 条的最新新闻"
+        - "提供每日、每周、每月的日报和周刊"
+      tags: ["AI", "新闻内容", "自动分类"]
+      # stars: 0
+      # forks: 0
+
+    - name: "Buy Me a Crypto Coffee"
+      description: "A blockchain-based creator support platform that allows supporters to directly support their favorite creators using cryptocurrency by buying virtual coffees."
+      url: "https://github.com/jiangjiax/buy-me-crypto-coffee"
+      website: "https://buymeacryptocoffee.top/"
+      image: "/static/images/buycc.jpeg"
+      highlights:
+        - "使用区块链技术构建的支持平台"
+        - "支持者可以直接使用加密货币支持他们喜欢的创作者"
+      tags: ["区块链", "solidity", "加密货币"]
+      # stars: 0
+      # forks: 0
+
+    # - name: "Matrix Calculator"
+    #   description: "A completely free and easy-to-use matrix calculator"
+    #   url: "https://github.com/jiangjiax/freematrixcalculator.com"
+    #   website: "https://freematrixcalculator.com/"
+    #   image: "/static/images/mc.jpeg"
+    #   highlights:
+    #     - "使用 HTML/CSS/JS 构建的矩阵计算器"
+    #     - "完全免费，无需注册"
+    #     - "支持常见的矩阵运算"
+    #   tags: ["HTML/CSS/JS", "矩阵计算器"]
+      # stars: 0
+      # forks: 0
   
   # 开源贡献
   contributions:
-    - name: "Kubernetes"
-      description: "服务网格和容器运行时相关贡献"
-      url: "https://github.com/kubernetes/kubernetes"
+    - name: "Stars"
+      description: "Stars(繁星)是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。它能帮助你快速创建一个现代化的个人网站，并提供 Web3 集成功能。本项目旨在为创作者提供一个去中心化的内容发布平台。"
+      url: "https://github.com/jiangjiax/stars"
       contributions:
-        - "优化了服务网格的性能，提升了 30% 的请求处理能力"
-        - "重构了容器运行时接口，使其更易于扩展"
-        - "修复了多个关键的网络和存储问题"
-      impact: "改进被合并到主分支，目前服务于数百万用户"
-    
-    - name: "以太坊"
-      description: "智能合约开发工具"
-      url: "https://github.com/ethereum/go-ethereum"
-      contributions:
-        - "设计并实现了新的合约测试框架"
-        - "添加了智能合约升级和代理模式支持"
-        - "优化了 Gas 费用估算算法"
-      impact: "显著提升了开发体验，被多个主流 DApp 项目采用"
+        - "参与项目的设计和开发"
+        - "参与项目的文档编写"
+        - "参与项目的测试和部署"
+      impact: "负责 Stars 项目的创建和主要开发工作。"
 
   # 教育背景
   education:
-    - school: "某某大学"
-      degree: "硕士学位"
-      major: "计算机科学与技术"
-      year: "2018 - 2021"
-      achievements:
-        - "国家奖学金获得者"
-        - "优秀毕业论文"
-        - "发表SCI论文2篇"
+    - school: "华东理工大学"
+      degree: "本科"
+      major: "计算机技术"
+      year: "2019 - 2021"
 
   # 工作经历
   experience:
-    - company: "某科技公司"
-      position: "高级开发工程师"
-      period: "2021.07 - 至今"
-      responsibilities:
-        - "负责公司核心业务系统的架构设计和开发"
-        - "带领团队完成微服务架构转型"
-        - "优化系统性能，提升用户体验"
-      technologies:
-        - "Go"
-        - "Kubernetes"
-        - "微服务"
-        - "Docker"
+    # - company: "某科技公司"
+    #   position: "高级开发工程师"
+    #   period: "2021.07 - 至今"
+    #   responsibilities:
+    #     - "负责公司核心业务系统的架构设计和开发"
+    #     - "带领团队完成微服务架构转型"
+    #     - "优化系统性能，提升用户体验"
+    #   technologies:
+    #     - "Go"
+    #     - "Kubernetes"
+    #     - "微服务"
+    #     - "Docker"
 
   # 证书和资质
   certifications:
-    - name: "AWS Certified Solutions Architect"
-      issuer: "Amazon Web Services"
-      date: "2023.06"
-    - name: "CNCF CKA"
-      issuer: "The Linux Foundation"
-      date: "2022.12"
+    # - name: "AWS Certified Solutions Architect"
+    #   issuer: "Amazon Web Services"
+    #   date: "2023.06"
+    # - name: "CNCF CKA"
+    #   issuer: "The Linux Foundation"
+    #   date: "2022.12"
 
-  # 联系方式
+  # Contact Information
   contact:
-    email: "your.email@example.com"    # 邮箱
-    wechat: "your_wechat_id"           # 微信号
-    phone: "+86 xxx xxxx xxxx"         # 手机号
-    telegram: "your_telegram"          
-    twitter: "your_twitter"            
+    email: "jiangjiaxingogogo@gmail.com"   
+    wechat: "kaopujjx"        
+    # phone: "+86 xxx xxxx xxxx"      
+    # telegram: "your_telegram"          
+    twitter: "@JJJ44129022"            
 
   # 推荐的文章系列
   recommendedSeries:
-    - name: "Web3探索"
+    - name: "Web3 探索"
       description: "探索 Web3 的技术和应用，从基础概念到实践应用"
-    - name: "技术前沿"
-      description: "关注最新技术趋势和创新实践"
 
 # 邮件订阅设置
 newsletter:
-  enabled: false  # 是否启用邮件订阅功能
+  enabled: true  # 是否启用邮件订阅功能
   provider: "buttondown"  # 邮件服务提供商
   buttondown:
-    username: ""  # Buttondown 用户名
+    username: "lige"  # Buttondown 用户名
     # apiKey: ""   # Buttondown API key (可选,用于后续功能扩展)
   description: "订阅获取最新文章更新"  # 订阅描述文本
 
 # 默认文章验证信息配置
-# verification:
-#   arweaveId: ""
-#   nftContract: ""
-#   author: ""
-#   contentHash: ""
-#   nft:
-#     price: "0"
-#     maxSupply: 100
-#     royaltyFee: 1000
-#     onePerAddress: true
-#     version: "1.0.0"
-#     chainId: 1
-#     tokenSymbol: "ETH"  # 可以根据不同链修改，如 "BNB"、"MATIC" 等
+verification:
+  arweaveId: ""
+  nftContract: ""
+  author: ""
+  contentHash: ""
+  nft:
+    price: "0"
+    maxSupply: 100
+    royaltyFee: 1000
+    onePerAddress: true
+    version: "1.0.0"
+    chainId: 1
+    tokenSymbol: "ETH"  # 可以根据不同链修改，如 "BNB"、"MATIC" 等
