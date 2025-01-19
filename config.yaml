@@ -9,7 +9,7 @@ seo:
 
 # 文章系列
 series:
-  - name: "Web3 探索"
+  - name: "探索Web3世界"
     description: "探索 Web3 的技术和应用，从基础概念到实践应用"
     order: 1
   - name: "人类升级计划"
