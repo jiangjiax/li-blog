@@ -13,7 +13,7 @@ verification:
     arweaveId: xyz789abc123def456
     nftContract: 0x5c83f2287833F567b1D80D7B981084eb5CaeF445
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x3cd975195f0906db771fb2fbe8ed26bbe5e2a56933093418caf94763cce1d948
+    contentHash: 0x3cd975195f0906db771fb2fbe8ed26bbe5e2a56933093418caf94763cce1d9481.0.0
     nft:
         price: "0.000001"
         maxSupply: 9999
@@ -21,6 +21,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 11155111
+        tokenSymbol: ""
 ---
 
 Stars 在头部定义文章的元数据。本文将详细介绍每个元数据字段的含义和使用方法。

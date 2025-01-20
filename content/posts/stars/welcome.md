@@ -12,7 +12,7 @@ verification:
     arweaveId: q98K4NSlJy2pEMx9bFMxXYBcStUVEjfKIHnviQkpHjE
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x4027a37c4c657142a01c9e45af6064d9255d4a4d31149be46dccb6ff6af2068c
+    contentHash: 0x4027a37c4c657142a01c9e45af6064d9255d4a4d31149be46dccb6ff6af2068c1.0.0
     nft:
         price: "0"
         maxSupply: 9999
@@ -20,6 +20,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
+        tokenSymbol: ""
 ---
 
 Stars 是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。本文将指导你从零开始使用 Stars 创建你的个人网站。

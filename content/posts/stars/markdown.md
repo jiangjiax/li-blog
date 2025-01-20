@@ -13,7 +13,7 @@ verification:
     arweaveId: Zj2oZ9_8utbLp_7Qrif4TrxQz_X0cBdIDaHWe7_3av4
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x244b036738c9b97f066279335c9e13bdc6d088ddc08e7ebe706b10a9a1ab4b8d
+    contentHash: 0x244b036738c9b97f066279335c9e13bdc6d088ddc08e7ebe706b10a9a1ab4b8d1.0.0
     nft:
         price: "0"
         maxSupply: 9999
@@ -21,6 +21,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
+        tokenSymbol: ""
 ---
 
 Stars 支持标准的 Markdown 语法，并添加了一些扩展功能。本文将详细介绍如何使用这些语法来创建丰富的内容。
