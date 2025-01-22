@@ -2,7 +2,7 @@
 date: 2025-01-22T00:00:00Z
 description: 人类卓越指南，是一系列文章，旨在帮助个人成长。本文是第一篇，主要介绍为什么要写这个系列，以及尝试解答一下人生中最基本的一些问题。
 series: 人类卓越指南
-seriesOrder: 0
+seriesOrder: 1
 slug: excellence/before-start
 tags:
     - 个人成长
