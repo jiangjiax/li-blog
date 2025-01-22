@@ -161,6 +161,8 @@ author:
   recommendedSeries:
     - name: "探索Web3世界"
       description: "探索 Web3 的技术和应用，从基础概念到实践应用"
+    - name: "人类卓越指南"
+      description: "探讨认知提升、效率优化和个人成长"
 
 # 邮件订阅设置
 newsletter:
