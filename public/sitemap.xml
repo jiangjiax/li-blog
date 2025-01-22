@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/</loc>
+    <loc>li-blog.top</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>/posts/</loc>
+    <loc>li-blog.topposts/</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>/tags/</loc>
+    <loc>li-blog.toptags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/posts/excellence/before-start/</loc>
+    <loc>li-blog.topposts/excellence/before-start/</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/blockchain-algorithm-mining/</loc>
+    <loc>li-blog.topposts/blockchain-algorithm-mining/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/security-and-cryptography-in-trading/</loc>
+    <loc>li-blog.topposts/security-and-cryptography-in-trading/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/consensus-mechanism-in-blockchain/</loc>
+    <loc>li-blog.topposts/consensus-mechanism-in-blockchain/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/web3-what/</loc>
+    <loc>li-blog.topposts/web3-what/</loc>
     <lastmod>2025-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/welcome-to-stars/</loc>
+    <loc>li-blog.topposts/welcome-to-stars/</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/metadata-guide/</loc>
+    <loc>li-blog.topposts/metadata-guide/</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/markdown-guide/</loc>
+    <loc>li-blog.topposts/markdown-guide/</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/posts/theme-guide/</loc>
+    <loc>li-blog.topposts/theme-guide/</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

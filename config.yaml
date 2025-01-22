@@ -1,6 +1,6 @@
 title: "鲤哥的博客"  # 博客标题
 description: "鲤哥的个人技术博客，分享技术、生活、读书心得"  # 网站描述
-baseURL: "/"  # 网站根路径
+baseURL: "li-blog.top"  # 网站根路径
 theme: "default"  # 主题名称
 
 # SEO 配置

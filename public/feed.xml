@@ -2,72 +2,72 @@
 <rss version="2.0">
   <Channel>
     <title>鲤哥的博客</title>
-    <link>/</link>
+    <link>li-blog.top</link>
     <description>最新文章更新</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 22 Jan 2025 15:42:24 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jan 2025 23:43:11 +0800</lastBuildDate>
     <item>
       <title>人类卓越指南：开始之前</title>
-      <link>//excellence/before-start</link>
+      <link>li-blog.top/excellence/before-start</link>
       <description>人类卓越指南，是一系列文章，旨在帮助个人成长。本文是第一篇，主要介绍为什么要写这个系列，以及尝试解答一下人生中最基本的一些问题。</description>
       <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//excellence/before-start</guid>
+      <guid>li-blog.top/excellence/before-start</guid>
     </item>
     <item>
       <title>探索Web3世界：区块链技术中的算法与挖矿</title>
-      <link>//blockchain-algorithm-mining</link>
+      <link>li-blog.top/blockchain-algorithm-mining</link>
       <description>在上一节中，我们介绍了Web3的概念及其落地领域，并提到Web3的核心基础设施——区块链技术。本节将深入探讨区块链技术中的两个关键组成部分：哈希算法与挖矿。</description>
       <pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//blockchain-algorithm-mining</guid>
+      <guid>li-blog.top/blockchain-algorithm-mining</guid>
     </item>
     <item>
       <title>探索Web3世界：加密技术与交易安全</title>
-      <link>//security-and-cryptography-in-trading</link>
+      <link>li-blog.top/security-and-cryptography-in-trading</link>
       <description>在区块链世界中，加密货币的交易安全性至关重要。为了确保交易的安全性和隐私性，区块链技术依赖于多种加密技术，包括对称加密、非对称加密和数字签名。本节将深入探讨这些技术的工作原理及其在区块链中的应用。</description>
       <pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//security-and-cryptography-in-trading</guid>
+      <guid>li-blog.top/security-and-cryptography-in-trading</guid>
     </item>
     <item>
       <title>探索Web3世界：区块链共识机制详解</title>
-      <link>//consensus-mechanism-in-blockchain</link>
+      <link>li-blog.top/consensus-mechanism-in-blockchain</link>
       <description>欢迎来到《探索Web3世界》系列文章，我是鲤哥。在这篇文章中，我们将深入探讨区块链中的共识机制，这是确保区块链网络安全性、一致性和去中心化的核心技术。</description>
       <pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//consensus-mechanism-in-blockchain</guid>
+      <guid>li-blog.top/consensus-mechanism-in-blockchain</guid>
     </item>
     <item>
       <title>探索Web3世界：从Web1到Web3的演进与未来</title>
-      <link>//web3-what</link>
+      <link>li-blog.top/web3-what</link>
       <description>Web3是什么？它是什么时候诞生的？它是如何工作的？这些问题将会在本文中得到解答。</description>
       <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//web3-what</guid>
+      <guid>li-blog.top/web3-what</guid>
     </item>
     <item>
       <title>Stars 入门</title>
-      <link>//welcome-to-stars</link>
+      <link>li-blog.top/welcome-to-stars</link>
       <description>介绍 Stars 的基本使用方法</description>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//welcome-to-stars</guid>
+      <guid>li-blog.top/welcome-to-stars</guid>
     </item>
     <item>
       <title>Stars 文章的元数据介绍</title>
-      <link>//metadata-guide</link>
+      <link>li-blog.top/metadata-guide</link>
       <description>详细介绍 Stars 文章的元数据配置和使用方法</description>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//metadata-guide</guid>
+      <guid>li-blog.top/metadata-guide</guid>
     </item>
     <item>
       <title>Stars Markdown 语法</title>
-      <link>//markdown-guide</link>
+      <link>li-blog.top/markdown-guide</link>
       <description>详细介绍 Stars 支持的 Markdown 语法和使用方法</description>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//markdown-guide</guid>
+      <guid>li-blog.top/markdown-guide</guid>
     </item>
     <item>
       <title>Stars 主题</title>
-      <link>//theme-guide</link>
+      <link>li-blog.top/theme-guide</link>
       <description>详细介绍 Stars 主题系统的使用方法和自定义主题开发指南</description>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//theme-guide</guid>
+      <guid>li-blog.top/theme-guide</guid>
     </item>
   </Channel>
 </rss>
