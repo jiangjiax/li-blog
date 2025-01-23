@@ -5507,6 +5507,18 @@ a:hover {
     display: none;
   }
 
+  @media (min-width: 769px) {
+    /* 系列和标签筛选器之间的间距 */
+
+    .table-of-contents-wrapper .pagination-btn i.md\:mb-6 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .table-of-contents-wrapper .pagination-btn i {
+    margin-bottom: 1rem;
+  }
+
   .pagination-btn i {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -6148,23 +6160,42 @@ a:hover {
   }
 }
 
-/* 目录样式 */
+/* 目录容器样式 */
 
 .table-of-contents-wrapper {
-  max-width: 20rem;
   border-radius: 0.5rem;
   background-color: rgb(10 25 47 / 0.3);
   padding: 1rem;
   --tw-backdrop-blur: blur(4px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  position: sticky;
+  top: 100px;
+  /* 与顶部导航保持距离 */
 }
 
+/* 目录标题 */
+
+@media (min-width: 769px) {
+  /* 系列和标签筛选器之间的间距 */
+
+  .table-of-contents-wrapper .text-lg.md\:mb-6 {
+    margin-bottom: 2rem;
+  }
+}
+
+.table-of-contents-wrapper .text-lg {
+  margin-bottom: 1rem;
+}
+
+/* 目录导航容器 */
+
 .table-of-contents {
-  max-height: calc(100vh - 12rem);
   overflow-y: auto;
   --tw-text-opacity: 1;
   color: rgb(204 214 246 / var(--tw-text-opacity, 1));
+  max-height: calc(100vh - 200px);
+  /* 设置最大高度，减去顶部导航、标题和padding的高度 */
 }
 
 .table-of-contents ul {
@@ -6346,6 +6377,16 @@ a:hover {
   .content .verification-info h3.md\:mb-6 {
     margin-bottom: 2rem;
   }
+
+  /* 系列和标签筛选器之间的间距 */
+
+  .table-of-contents-wrapper .content .verification-info h3.md\:mb-6 {
+    margin-bottom: 2rem;
+  }
+}
+
+.table-of-contents-wrapper .content .verification-info h3 {
+  margin-bottom: 1rem;
 }
 
 .content .verification-info h3 {
@@ -7051,10 +7092,6 @@ a:hover {
 
 .max-h-\[50vh\] {
   max-height: 50vh;
-}
-
-.max-h-\[calc\(100vh-12rem\)\] {
-  max-height: calc(100vh - 12rem);
 }
 
 .min-h-full {
@@ -7938,10 +7975,6 @@ a:hover {
   padding-top: 1.5rem;
 }
 
-.pt-\[5\.5rem\] {
-  padding-top: 5.5rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -8342,6 +8375,30 @@ a:hover {
     }
 
     /* 系列和标签筛选器之间的间距 */
+
+    /* 系列和标签筛选器之间的间距 */
+
+    .table-of-contents-wrapper .md\:text-lg.md\:mb-6 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .table-of-contents-wrapper .md\:text-lg {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  @media (min-width: 769px) {
+    /* 系列和标签筛选器之间的间距 */
+
+    .table-of-contents-wrapper .lg\:text-lg.md\:mb-6 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .table-of-contents-wrapper .lg\:text-lg {
+    margin-bottom: 1rem;
   }
 }
 

@@ -5,7 +5,14 @@
     <link>https://www.li-blog.top</link>
     <description>最新文章更新</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 22 Jan 2025 23:51:42 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jan 2025 23:53:05 +0800</lastBuildDate>
+    <item>
+      <title>探索web3世界：Solidity 完全入门指南</title>
+      <link>https://www.li-blog.top/solidity-guide</link>
+      <description>欢迎来到《探索 Web3 世界》系列文章，我是鲤哥。在这篇文章中，我将带你深入探索 Solidity——以太坊智能合约编程语言。无论你是编程新手还是有一定经验的开发者，这篇文章都将为你提供实用的知识和技巧，帮助你快速上手 Solidity。</description>
+      <pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.li-blog.top/solidity-guide</guid>
+    </item>
     <item>
       <title>人类卓越指南：开始之前</title>
       <link>https://www.li-blog.top/excellence/before-start</link>

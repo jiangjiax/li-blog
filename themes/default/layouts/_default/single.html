@@ -185,7 +185,7 @@
                                 {{ if .Post.Verification.NFT.Price }}
                                 <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
                                     <div class="text-stars-muted text-sm mb-1">铸造价格</div>
-                                    <div class="text-stars-accent font-mono">{{ .Post.Verification.NFT.Price }} ETH</div>
+                                    <div class="text-stars-accent font-mono">{{ .Post.Verification.NFT.Price }} {{ .Post.Verification.NFT.TokenSymbol }}</div>
                                 </div>
                                 {{ end }}
 
@@ -294,7 +294,7 @@
         <!-- 右侧目录 -->
         {{ if .Post.TableOfContents }}
         <div class="hidden lg:block lg:col-span-3">
-            <div class="sticky top-24 pt-[5.5rem]">
+            <div class="sticky top-24">
                 {{ template "components/toc" .Post.TableOfContents }}
             </div>
         </div>
