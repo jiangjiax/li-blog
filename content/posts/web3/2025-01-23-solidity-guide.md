@@ -1,8 +1,8 @@
 ---
-date: 2025-01-23T00:00:00Z
+date: 2025-01-24T00:00:00Z
 description: 欢迎来到《探索 Web3 世界》系列文章，我是鲤哥。在这篇文章中，我将带你深入探索 Solidity——以太坊智能合约编程语言。无论你是编程新手还是有一定经验的开发者，这篇文章都将为你提供实用的知识和技巧，帮助你快速上手 Solidity。
 series: 探索Web3世界
-seriesOrder: 5
+seriesOrder: 6
 slug: solidity-guide
 tags:
     - Solidity

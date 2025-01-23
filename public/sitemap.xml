@@ -17,6 +17,12 @@
   </url>
   <url>
     <loc>https://www.li-blog.top/posts/solidity-guide</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.li-blog.top/posts/web3-smart-contracts-and-ethereum</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -28,20 +34,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.li-blog.top/posts/blockchain-algorithm-mining</loc>
+    <loc>https://www.li-blog.top/posts/consensus-mechanism-in-blockchain</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.li-blog.top/posts/security-and-cryptography-in-trading</loc>
-    <lastmod>2025-01-21</lastmod>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.li-blog.top/posts/consensus-mechanism-in-blockchain</loc>
-    <lastmod>2025-01-21</lastmod>
+    <loc>https://www.li-blog.top/posts/blockchain-algorithm-mining</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

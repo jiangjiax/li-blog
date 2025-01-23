@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            探索Web3世界：智能合约与以太坊 - 鲤哥的博客 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="欢迎回到《探索Web3世界》系列文章，我是鲤哥，在本篇文章中，我将用简洁易懂的语言介绍清楚智能合约和以太坊是什么。">
+    
+    <meta name="keywords" content="智能合约, 以太坊, 区块链">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="https://www.li-blog.top/feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">探索Web3世界</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 5
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    探索Web3世界：智能合约与以太坊
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    欢迎回到《探索Web3世界》系列文章，我是鲤哥，在本篇文章中，我将用简洁易懂的语言介绍清楚智能合约和以太坊是什么。
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-01-23
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            8 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            智能合约
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            以太坊
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            区块链
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <h2 id="heading">什么是智能合约？</h2>
+<p>想象一下，你走进一家无人售货店，想要买一瓶饮料。你扫码支付，选择饮料，机器&quot;咔嚓&quot;一声，饮料自动掉出来。整个过程没有店员，没有收银台，只有你和那台聪明的机器。这台机器，其实就是&quot;智能合约&quot;的现实版。</p>
+<p>智能合约就像是一个自动执行的协议。它运行在区块链上，一旦满足预设条件，就会自动执行相应的操作。比如，你买了一份智能保险，如果你的车发生事故，传感器会自动检测到，并根据保险条款直接赔付给你。不需要打电话、填表格，甚至不需要等保险公司审核——一切都由代码自动完成。</p>
+<h3 id="heading-1">智能合约的三大法宝</h3>
+<ol>
+<li><strong>去中心化</strong>：没有中间商赚差价，一切由区块链网络自动处理</li>
+<li><strong>不可篡改</strong>：一旦部署，合约代码就像刻在石头上一样，谁也无法更改</li>
+<li><strong>自动执行</strong>：条件满足，合约自动运行，省时省力，还不用担心人为错误</li>
+</ol>
+<p>智能合约的这些特性，让它成为了Web3世界的&quot;超级助手&quot;，从金融交易到保险理赔，从投票系统到供应链管理，它的应用场景无处不在。</p>
+<h2 id="heading-2">什么是以太坊？</h2>
+<h3 id="heading-3">以太坊简介</h3>
+<p>如果说比特币是区块链世界的&quot;黄金&quot;，那么以太坊就是区块链世界的&quot;超级计算机&quot;。它由天才少年Vitalik Buterin于2015年创立，目标不仅仅是处理货币交易，还要让开发者能够构建各种去中心化应用（DApps）。</p>
+<p>以太坊同样是一个开源的、去中心化的区块链平台，它不仅支持原生的加密货币：以太币（ETH），还提供了一个运行去中心化应用程序（DApps）的生态系统。这些应用程序通过智能合约来实现，运行在以太坊虚拟机（EVM）上。</p>
+<h3 id="heading-4">以太坊的核心特点</h3>
+<ol>
+<li><strong>智能合约</strong>：开发者可以用编程语言（比如Solidity）编写智能合约，部署到以太坊上</li>
+<li><strong>去中心化应用（DApps）</strong>：以太坊为开发者提供了构建透明、安全、不可篡改应用的平台</li>
+<li><strong>以太币（ETH）</strong>：以太坊的原生加密货币，用于支付交易费用和智能合约的执行费用</li>
+</ol>
+<h3 id="heading-5">节点与网络：区块链的神经系统</h3>
+<p>以太坊网络由成千上万的节点组成，这些节点就像是区块链的&quot;神经系统&quot;，共同维护着整个网络的运行。节点分为几种类型：</p>
+<ol>
+<li><strong>全节点</strong>：保存完整的区块链数据，验证所有交易和区块</li>
+<li><strong>轻节点</strong>：只保存部分数据，依赖全节点进行验证</li>
+<li><strong>矿工节点</strong>：负责打包交易并生成新区块（在PoW机制下）</li>
+</ol>
+<p>这些节点通过互联网连接在一起，形成一个去中心化的网络，确保数据的安全性和一致性。</p>
+<h3 id="heading-6">账号与钱包：你的区块链身份证</h3>
+<p>在以太坊的世界里，每个人都需要一个&quot;身份证&quot;，这就是以太坊账号。账号分为两种：</p>
+<ol>
+<li><strong>外部账号（EOA）</strong>：由你通过私钥控制，可以用来发送交易、调用智能合约</li>
+<li><strong>合约账号</strong>：由智能合约代码控制，没有私钥，只能通过外部账号触发</li>
+</ol>
+<p>MetaMask是一款超级流行的以太坊钱包，你可以在浏览器插件市场找到它。它就像你的区块链&quot;管家&quot;，可以帮助你：</p>
+<ul>
+<li>管理账号</li>
+<li>发送和接收ETH</li>
+<li>与DApps互动</li>
+<li>签署交易</li>
+</ul>
+<h3 id="gas">Gas：区块链的燃料</h3>
+<p>在以太坊的世界里，ETH不仅是货币，还是驱动整个网络的&quot;燃料&quot;。每笔交易、每个智能合约的执行都需要消耗一定的资源，这些资源的费用就是用ETH支付的。</p>
+<p>Gas费用由以下两个因素决定：</p>
+<ol>
+<li><strong>Gas Limit</strong>：你愿意为这笔交易支付的最大Gas量</li>
+<li><strong>Gas Price</strong>：你愿意为每单位Gas支付的ETH金额</li>
+</ol>
+<p>计算公式：</p>
+<p><strong>总费用 = Gas Limit × Gas Price</strong></p>
+<p>举个例子，如果你设置的Gas Limit是50,000，Gas Price是20 Gwei，那么这笔交易的总费用就是：</p>
+<p><strong>50,000 × 20 Gwei = 1,000,000 Gwei = 0.001 ETH</strong></p>
+<p>对了，ETH的最小单位是Wei，1 ETH = 10^18 Wei。常用的单位还有Gwei（1 Gwei = 10^9 Wei），通常也用于计算Gas费用。</p>
+<h3 id="heading-7">以太坊采用什么共识机制？</h3>
+<p>以太坊最初采用工作量证明（PoW）共识机制，和比特币类似。矿工们通过解决复杂的数学难题来争夺记账权，并获得区块奖励。然而，PoW机制有一个很大的问题——能耗太高。比特币矿工每年消耗的电力堪比一个中等国家！</p>
+<p>为了解决这个问题，以太坊升级了到权益证明（PoS）机制，这一升级被称为以太坊2.0。</p>
+<p>在PoS机制下，矿工变成了验证者。验证者需要质押至少32 ETH，才有资格参与区块验证。验证者通过随机选择的方式创建新区块，并获得区块奖励。</p>
+<h2 id="heading-8">智能合约的编写规则</h2>
+<h3 id="heading-9">智能合约语言与框架</h3>
+<p>以太坊智能合约的编程语言有多种选择，但最主流的是 Solidity。</p>
+<p>HardHat 框架则是 Solidity 语言最受欢迎的框架之一，它使用 JavaScript 语言编写。HardHat 提供了强大的工具链，包括本地测试网络、调试器和插件系统。</p>
+<p>除了 HardHat，还有 Foundry 框架用的人也比较多，它是一个基于Rust的智能合约开发工具链，支持使用 Solidity 和 Rust 编写智能合约。</p>
+<h3 id="heading-10">编译智能合约</h3>
+<p>编写完智能合约后，需要使用编译器将其转换为以太坊虚拟机（EVM）可以执行的字节码。Solidity 编译器（如solc）可以帮助你完成这一过程。</p>
+<h3 id="heading-11">部署智能合约</h3>
+<p>编译完成后，智能合约需要部署到以太坊网络上。部署过程会消耗 Gas，因此你需要确保钱包中有足够的 ETH。</p>
+<p>常用的部署工具包括：</p>
+<ul>
+<li>HardHat Deploy：HardHat 的部署插件，支持多网络部署和脚本化管理。</li>
+<li>Remix IDE：一个在线的智能合约开发环境，支持一键部署到测试网络或主网。</li>
+</ul>
+<h3 id="heading-12">测试智能合约</h3>
+<p>在部署之前，务必对智能合约进行全面的测试。你可以使用 Foundry 或 HardHat 等工具编写测试用例，确保合约的逻辑正确无误。</p>
+<h3 id="heading-13">验证智能合约</h3>
+<p>部署后，你可以通过 Etherscan 等区块链浏览器验证智能合约的源代码，确保其透明性和安全性。</p>
+<h3 id="heading-14">升级智能合约</h3>
+<p>智能合约一旦部署到区块链上，其代码就不可更改。这种不可篡改性虽然保证了合约的透明性和安全性，但也带来了一个问题：如果合约中存在漏洞，或者需要添加新功能，该怎么办？</p>
+<p>这时候就需要智能合约的升级机制。通过合理的设计，开发者可以在不破坏原有合约逻辑和数据的情况下，实现对合约的升级。</p>
+<h4 id="heading-15">代理模式</h4>
+<p>代理模式是智能合约升级中最常用的方法。它的核心思想是将合约逻辑和合约数据分离：</p>
+<ul>
+<li>代理合约（Proxy Contract）：负责存储数据和转发用户请求。</li>
+<li>逻辑合约（Logic Contract）：负责实现具体的业务逻辑。</li>
+</ul>
+<p>当需要升级时，只需部署一个新的逻辑合约，并将代理合约指向新的逻辑合约地址即可。这样，用户始终与代理合约交互，而代理合约会将请求转发给最新的逻辑合约。</p>
+<p>以下是一个简单的透明代理模式（代理合约会检查调用者是否为管理员。如果是管理员，则调用升级函数；否则，转发给逻辑合约）实现：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e">// 代理合约
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">Proxy</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">public</span> implementation; <span style="color:#75715e">// 逻辑合约地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">public</span> admin; <span style="color:#75715e">// 管理员地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">address</span> _implementation) {
+</span></span><span style="display:flex;"><span>        implementation <span style="color:#f92672">=</span> _implementation;
+</span></span><span style="display:flex;"><span>        admin <span style="color:#f92672">=</span> msg.sender;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 升级逻辑合约
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">upgrade</span>(<span style="color:#66d9ef">address</span> _newImplementation) <span style="color:#66d9ef">external</span> {
+</span></span><span style="display:flex;"><span>        require(msg.sender <span style="color:#f92672">==</span> admin, <span style="color:#e6db74">&#34;Only admin can upgrade&#34;</span>);
+</span></span><span style="display:flex;"><span>        implementation <span style="color:#f92672">=</span> _newImplementation;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 转发用户请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这是一个特殊的函数，当用户调用的函数在合约中不存在时，会自动触发fallback函数。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    fallback() <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">payable</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将implementation的值赋给局部变量_impl，以便在汇编代码中使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">address</span> _impl <span style="color:#f92672">=</span> implementation;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// assembly 是Solidity中的内联汇编，允许开发者直接编写EVM（以太坊虚拟机）级别的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">assembly</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 这是一个EVM指令，用于将调用数据（calldata）复制到内存中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">calldatacopy</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">calldatasize</span>())
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 这是一个EVM指令，用于调用另一个合约的代码，但保持当前合约的上下文（包括存储、余额等）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">let</span> result <span style="color:#f92672">:=</span> <span style="color:#a6e22e">delegatecall</span>(<span style="color:#a6e22e">gas</span>(), _impl, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">calldatasize</span>(), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 这是一个EVM指令，用于将调用外部合约后的返回数据复制到内存中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">returndatacopy</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">returndatasize</span>())
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">switch</span> result
+</span></span><span style="display:flex;"><span>            case <span style="color:#ae81ff">0</span> { <span style="color:#a6e22e">revert</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">returndatasize</span>()) }
+</span></span><span style="display:flex;"><span>            default { <span style="color:#a6e22e">return</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">returndatasize</span>()) }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 逻辑合约
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">LogicV1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint256</span> <span style="color:#66d9ef">public</span> value;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">uint256</span> _value) <span style="color:#66d9ef">public</span> {
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> _value;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 新版本逻辑合约
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">LogicV2</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint256</span> <span style="color:#66d9ef">public</span> value;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">uint256</span> _value) <span style="color:#66d9ef">public</span> {
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> _value <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// 新功能：将值翻倍
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><h4 id="heading-16">模块化设计</h4>
+<p>在这种模式下，合约的功能被拆分为多个模块，每个模块负责实现特定的功能。当需要升级时，只需替换或添加新的模块即可。</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e">// 基础合约
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">Base</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint256</span> <span style="color:#66d9ef">public</span> value;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">uint256</span> _value) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> {
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> _value;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 模块合约V1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">ModuleV1</span> <span style="color:#66d9ef">is</span> Base {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">uint256</span> _value) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> {
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> _value <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 新功能：加10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 模块合约V2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> <span style="color:#a6e22e">ModuleV2</span> <span style="color:#66d9ef">is</span> Base {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">uint256</span> _value) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> {
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> _value <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// 新功能：将值翻倍
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>部署Base合约：</p>
+<ol>
+<li>部署ModuleV1合约，并继承Base合约。</li>
+<li>用户通过ModuleV1合约与Base交互。</li>
+<li>当需要升级时，部署ModuleV2合约，并继承Base合约。</li>
+<li>用户通过ModuleV2合约与Base交互，原有数据保持不变。</li>
+</ol>
+<h3 id="api">以太坊客户端API</h3>
+<p>以太坊提供了丰富的API接口，允许开发者与区块链进行交互。常用的API包括：</p>
+<ul>
+<li>Web3.js：JavaScript库，用于与以太坊节点通信。</li>
+<li>Ethers.js：另一个流行的JavaScript库，功能更强大且易于使用。</li>
+<li>Infura：提供以太坊节点的API服务，无需自己运行节点。</li>
+</ul>
+<h3 id="heading-17">以太坊的存储</h3>
+<p>以太坊的存储分为两种：</p>
+<ol>
+<li>链上存储：数据直接存储在区块链上，具有不可篡改性，但成本较高。</li>
+<li>链下存储：数据存储在去中心化存储网络（如IPFS或Arweave）中，成本较低，但需要通过哈希值链接到区块链。</li>
+</ol>
+<h2 id="heading-18">结语</h2>
+<p>通过这篇文章，我们不仅了解了智能合约的神奇之处，还深入探讨了以太坊的账号系统、钱包使用、ETH面额、Gas费用、节点网络和共识机制等等。这些知识可以帮你更好地理解以太坊的运作原理。</p>
+<p>接下来的文章，我打算讲清楚智能合约的编程语言 Solidity 的语法。敬请期待！</p>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0x185434077436d61b120f7f5e733e1a98d64a0db27e5dfb6f597d9c260d2dde5d1.0.0')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0x185434077436d61b120f7f5e733e1a98d64a0db27e5dfb6f597d9c260d2dde5d1.0.0</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">探索Web3世界</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 5 篇文章
+                            </div>
+                            <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">探索Web3世界</h3>
+                                </div>
+                                <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 5 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是智能合约？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是智能合约？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="智能合约的三大法宝"
+           class="toc-link toc-link-child"
+           data-level="3">
+            智能合约的三大法宝
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="什么是以太坊？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是以太坊？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-3" 
+           title="以太坊简介"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊简介
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-4" 
+           title="以太坊的核心特点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊的核心特点
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-5" 
+           title="节点与网络：区块链的神经系统"
+           class="toc-link toc-link-child"
+           data-level="3">
+            节点与网络：区块链的神经系统
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-6" 
+           title="账号与钱包：你的区块链身份证"
+           class="toc-link toc-link-child"
+           data-level="3">
+            账号与钱包：你的区块链身份证
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#gas" 
+           title="Gas：区块链的燃料"
+           class="toc-link toc-link-child"
+           data-level="3">
+            Gas：区块链的燃料
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-7" 
+           title="以太坊采用什么共识机制？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊采用什么共识机制？
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-8" 
+                   title="智能合约的编写规则"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    智能合约的编写规则
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-9" 
+           title="智能合约语言与框架"
+           class="toc-link toc-link-child"
+           data-level="3">
+            智能合约语言与框架
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-10" 
+           title="编译智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            编译智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-11" 
+           title="部署智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            部署智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-12" 
+           title="测试智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            测试智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-13" 
+           title="验证智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            验证智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-14" 
+           title="升级智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            升级智能合约
+        </a>
+        
+            <ul>
+                
+    
+    <li>
+        <a href="#heading-15" 
+           title="代理模式"
+           class="toc-link toc-link-child"
+           data-level="4">
+            代理模式
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-16" 
+           title="模块化设计"
+           class="toc-link toc-link-child"
+           data-level="4">
+            模块化设计
+        </a>
+        
+    </li>
+    
+
+            </ul>
+        
+    </li>
+    
+    <li>
+        <a href="#api" 
+           title="以太坊客户端API"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊客户端API
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-17" 
+           title="以太坊的存储"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊的存储
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-18" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是智能合约？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是智能合约？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="智能合约的三大法宝"
+           class="toc-link toc-link-child"
+           data-level="3">
+            智能合约的三大法宝
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="什么是以太坊？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是以太坊？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-3" 
+           title="以太坊简介"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊简介
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-4" 
+           title="以太坊的核心特点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊的核心特点
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-5" 
+           title="节点与网络：区块链的神经系统"
+           class="toc-link toc-link-child"
+           data-level="3">
+            节点与网络：区块链的神经系统
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-6" 
+           title="账号与钱包：你的区块链身份证"
+           class="toc-link toc-link-child"
+           data-level="3">
+            账号与钱包：你的区块链身份证
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#gas" 
+           title="Gas：区块链的燃料"
+           class="toc-link toc-link-child"
+           data-level="3">
+            Gas：区块链的燃料
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-7" 
+           title="以太坊采用什么共识机制？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊采用什么共识机制？
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-8" 
+                   title="智能合约的编写规则"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    智能合约的编写规则
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-9" 
+           title="智能合约语言与框架"
+           class="toc-link toc-link-child"
+           data-level="3">
+            智能合约语言与框架
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-10" 
+           title="编译智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            编译智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-11" 
+           title="部署智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            部署智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-12" 
+           title="测试智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            测试智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-13" 
+           title="验证智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            验证智能合约
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-14" 
+           title="升级智能合约"
+           class="toc-link toc-link-child"
+           data-level="3">
+            升级智能合约
+        </a>
+        
+            <ul>
+                
+    
+    <li>
+        <a href="#heading-15" 
+           title="代理模式"
+           class="toc-link toc-link-child"
+           data-level="4">
+            代理模式
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-16" 
+           title="模块化设计"
+           class="toc-link toc-link-child"
+           data-level="4">
+            模块化设计
+        </a>
+        
+    </li>
+    
+
+            </ul>
+        
+    </li>
+    
+    <li>
+        <a href="#api" 
+           title="以太坊客户端API"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊客户端API
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#heading-17" 
+           title="以太坊的存储"
+           class="toc-link toc-link-child"
+           data-level="3">
+            以太坊的存储
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-18" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;&#34;,&#34;NftContract&#34;:&#34;&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0x185434077436d61b120f7f5e733e1a98d64a0db27e5dfb6f597d9c260d2dde5d1.0.0&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:100,&#34;RoyaltyFee&#34;:1000,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:1,&#34;TokenSymbol&#34;:&#34;ETH&#34;}}"
+         data-title="探索Web3世界：智能合约与以太坊"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/jiangjiax/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.51ab9f649b4caa7df89d.bundle.js"></script>
+    
+    <script src="/static/dist/nft.ffb817eee87ea86db734.bundle.js"></script>
+    
+</body>
+</html> 
