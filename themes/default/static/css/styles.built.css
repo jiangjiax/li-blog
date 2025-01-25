@@ -4757,6 +4757,7 @@ details.collapse summary::-webkit-details-marker {
   --stars-gold: #ffd700;
   --stars-text: #ccd6f6;
   --stars-muted: #8892b0;
+  color-scheme: dark;
 }
 
 /* 基础样式 */
@@ -4768,6 +4769,7 @@ body {
   --tw-text-opacity: 1;
   color: rgb(204 214 246 / var(--tw-text-opacity, 1));
   font-family: 'Space Mono', monospace;
+  background-color: var(--stars-primary) !important;
 }
 
 @media (min-width: 769px) {
@@ -8323,11 +8325,17 @@ a:hover {
 
 :root {
   --stars-primary: #0a192f;
+  /* 深蓝色主背景 */
   --stars-secondary: #112240;
+  /* 次要深蓝色 */
   --stars-accent: #64ffda;
+  /* 青绿色强调色 */
   --stars-gold: #ffd700;
+  /* 金色 */
   --stars-text: #ccd6f6;
+  /* 浅色文本 */
   --stars-muted: #8892b0;
+  /* 次要文本 */
 }
 
 @media (hover:hover) {
