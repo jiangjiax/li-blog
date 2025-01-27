@@ -21,7 +21,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 11155111
-        tokenSymbol: ""
+        tokenSymbol: "ETH"
 ---
 
 Stars 在头部定义文章的元数据。本文将详细介绍每个元数据字段的含义和使用方法。

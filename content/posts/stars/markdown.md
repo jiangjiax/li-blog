@@ -21,7 +21,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
-        tokenSymbol: ""
+        tokenSymbol: "TLOS"
 ---
 
 Stars 支持标准的 Markdown 语法，并添加了一些扩展功能。本文将详细介绍如何使用这些语法来创建丰富的内容。

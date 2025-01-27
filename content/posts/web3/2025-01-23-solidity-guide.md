@@ -11,18 +11,18 @@ tags:
     - 以太坊
 title: 探索web3世界：Solidity 完全入门指南
 verification:
-    arweaveId: ""
-    nftContract: ""
+    arweaveId: uAUrXIBsIUwSr2nYLHW48JUtNswmA6CENEY2_-pBHZM
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x47c54e59d3e44e9b2ede352ca79e99a7e05a5f7ff9d1208e84a2162583bee4bb1.0.0
     nft:
         price: "0"
-        maxSupply: 100
-        royaltyFee: 1000
+        maxSupply: 9999
+        royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 1
-        tokenSymbol: ETH
+        chainId: 41
+        tokenSymbol: "TLOS"
 ---
 
 ## 基础知识

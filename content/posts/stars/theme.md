@@ -21,7 +21,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
-        tokenSymbol: ""
+        tokenSymbol: "TLOS"
 ---
 
 Stars 提供了灵活的主题系统，让你可以轻松定制网站的外观。本文将介绍如何使用和开发 Stars 主题。

@@ -9,18 +9,18 @@ tags:
     - 认知提升
 title: 人类卓越指南：开始之前
 verification:
-    arweaveId: ""
-    nftContract: ""
+    arweaveId: x7ih4y9n_ROov7furcHjUFh0oLrLb5JOOzDF4U6OStQ
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0xd1c4b1963e7526bda668c43507458345f9a8368e339d2c590f85de03554514691.0.0
     nft:
         price: "0"
-        maxSupply: 100
-        royaltyFee: 1000
+        maxSupply: 9999
+        royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 1
-        tokenSymbol: ETH
+        chainId: 41
+        tokenSymbol: TLOS
 ---
 
 ## 游戏目标：从虚无中寻找自由

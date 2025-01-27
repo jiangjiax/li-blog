@@ -20,7 +20,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
-        tokenSymbol: ""
+        tokenSymbol: "TLOS"
 ---
 
 Stars 是一个基于 Go 语言开发的去中心化个人网站生成器，支持 Web3 功能。本文将指导你从零开始使用 Stars 创建你的个人网站。

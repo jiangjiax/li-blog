@@ -10,18 +10,18 @@ tags:
     - 区块链
 title: 探索Web3世界：智能合约与以太坊
 verification:
-    arweaveId: ""
-    nftContract: ""
+    arweaveId: mBOgbODkgsFpSzfgTnIAQuUuAAfkegptCwfX3gcVh0Q
+    nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x185434077436d61b120f7f5e733e1a98d64a0db27e5dfb6f597d9c260d2dde5d1.0.0
     nft:
         price: "0"
-        maxSupply: 100
-        royaltyFee: 1000
+        maxSupply: 9999
+        royaltyFee: 0
         onePerAddress: true
         version: 1.0.0
-        chainId: 1
-        tokenSymbol: ETH
+        chainId: 41
+        tokenSymbol: "TLOS"
 ---
 
 ## 什么是智能合约？
