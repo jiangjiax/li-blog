@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            探索Web3世界：欺诈证明 &amp; 零知识证明 - 鲤哥的博客 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨欺诈证明（Fraud Proof）和零知识证明（Zero-Knowledge Proof）的工作原理、应用场景及其在Web3生态系统中的重要性。">
+    
+    <meta name="keywords" content="以太坊, 区块链, 欺诈证明, 零知识证明">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="https://www.li-blog.top/feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">探索Web3世界</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 10
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    探索Web3世界：欺诈证明 &amp; 零知识证明
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨欺诈证明（Fraud Proof）和零知识证明（Zero-Knowledge Proof）的工作原理、应用场景及其在Web3生态系统中的重要性。
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-02-04
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            5 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            以太坊
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            区块链
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            欺诈证明
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            零知识证明
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <h2 id="heading">什么是欺诈证明和零知识证明？</h2>
+<p>想象一下，你正在参加一个魔术表演。魔术师声称他可以把一张纸变成一只鸽子，但你怀疑他可能只是把鸽子藏在袖子里。这时候，你有两种方式来验证他的说法：</p>
+<ol>
+<li><strong>欺诈证明</strong>：你要求魔术师当场表演，并仔细观察他的每一个动作，如果发现他作弊，就当场揭穿他。</li>
+<li><strong>零知识证明</strong>：魔术师不直接展示他的手法，而是通过一系列复杂的步骤，让你相信他真的能把纸变成鸽子，而不需要透露任何关于他手法的秘密。</li>
+</ol>
+<p>在区块链世界中，欺诈证明和零知识证明就是这两种验证方式的体现。</p>
+<h2 id="fraud-proof">欺诈证明（Fraud Proof）</h2>
+<h3 id="1-">1. 什么是欺诈证明？</h3>
+<p>欺诈证明是一种机制，允许任何人挑战并证明某个交易或状态转换是无效的。就像在法庭上，原告需要提供证据来证明被告有罪。</p>
+<h3 id="2-">2. 欺诈证明的工作原理</h3>
+<ol>
+<li><strong>交易提交</strong>：用户提交交易到区块链网络。</li>
+<li><strong>状态转换</strong>：网络处理交易并更新状态。</li>
+<li><strong>挑战期</strong>：在挑战期内，任何人都可以质疑交易的有效性。</li>
+<li><strong>欺诈证明</strong>：如果发现无效交易，提交欺诈证明，撤销该交易。</li>
+</ol>
+<h3 id="3-">3. 欺诈证明的应用场景</h3>
+<ul>
+<li><strong>Optimistic Rollups</strong>：在Optimistic Rollups中，默认所有交易都是有效的，除非有人提出挑战。</li>
+<li><strong>状态通道</strong>：在状态通道中，如果一方试图提交无效的最终状态，另一方可以提交欺诈证明来纠正错误。</li>
+</ul>
+<h3 id="4-">4. 欺诈证明的优缺点</h3>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><strong>高吞吐量</strong>：默认交易有效，无需每笔交易都验证。</li>
+<li><strong>低费用</strong>：通过批量处理，大幅降低交易成本。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>挑战期</strong>：需要等待挑战期结束，交易才能最终确认。</li>
+<li><strong>复杂性</strong>：实现欺诈证明机制需要复杂的智能合约和数据结构。</li>
+</ul>
+<h2 id="zero-knowledge-proof">零知识证明（Zero-Knowledge Proof）</h2>
+<h3 id="1--1">1. 什么是零知识证明？</h3>
+<p>零知识证明是一种密码学技术，允许一方（证明者）向另一方（验证者）证明某个陈述是真实的，而不透露任何关于该陈述的额外信息。就像你向朋友证明你知道一个秘密，但不需要告诉他秘密是什么。</p>
+<h3 id="2--1">2. 零知识证明的工作原理</h3>
+<ol>
+<li><strong>陈述</strong>：证明者声称某个陈述是真实的。</li>
+<li><strong>证明</strong>：证明者生成一个零知识证明，证明该陈述的真实性。</li>
+<li><strong>验证</strong>：验证者验证零知识证明，确认陈述的真实性，而不需要知道任何关于陈述的细节。</li>
+</ol>
+<h3 id="3--1">3. 用一个比喻解释零知识证明的实现</h3>
+<p>假设小明知道一个秘密数字是 7，而你想验证他是否真的知道这个数字，但你不希望他直接告诉你数字是什么。以下是零知识证明的步骤：</p>
+<ol>
+<li>
+<p>小明生成一个谜题：小明选择一个随机数（比如 3），然后计算 7 + 3 = 10，并告诉你结果是 10。</p>
+</li>
+<li>
+<p>你提出挑战：你随机选择一个问题，比如“请告诉我你用的随机数是什么？”或者“请告诉我秘密数字加随机数的结果是什么？”</p>
+</li>
+<li>
+<p>小明回答问题：</p>
+<ul>
+<li>如果你问的是随机数，小明会告诉你 3。</li>
+<li>如果你问的是结果，小明会告诉你 10。</li>
+</ul>
+</li>
+<li>
+<p>你验证答案：</p>
+<ul>
+<li>如果小明说的是随机数 3，你可以用 10 - 3 = 7 来验证秘密数字。</li>
+<li>如果小明说的是结果 10，你可以用 10 - 3 = 7 来验证秘密数字。</li>
+</ul>
+</li>
+</ol>
+<p>通过这个过程，你确认小明知道秘密数字 7，但小明从未直接告诉你这个数字是什么。这就是零知识证明的基本思想。</p>
+<h3 id="4--1">4. 零知识证明的应用场景</h3>
+<ul>
+<li><strong>隐私保护</strong>：在区块链交易中，隐藏交易的金额和参与者身份。</li>
+<li><strong>身份验证</strong>：证明你拥有某个身份，而不需要透露身份的具体信息。</li>
+<li><strong>ZK-Rollups</strong>：在ZK-Rollups中，使用零知识证明验证交易的有效性，无需公开交易细节。</li>
+</ul>
+<h3 id="5-">5. 零知识证明的优缺点</h3>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><strong>隐私保护</strong>：不透露任何关于陈述的额外信息。</li>
+<li><strong>即时确认</strong>：交易一旦提交，立即得到确认，无需等待挑战期。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>计算复杂度</strong>：生成和验证零知识证明需要大量的计算资源。</li>
+<li><strong>实现难度</strong>：实现零知识证明机制需要复杂的密码学算法。</li>
+</ul>
+<h2 id="heading-1">欺诈证明与零知识证明的对比</h2>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>欺诈证明</strong></th>
+<th><strong>零知识证明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>验证方式</strong></td>
+<td>挑战无效交易</td>
+<td>证明交易有效性</td>
+</tr>
+<tr>
+<td><strong>隐私保护</strong></td>
+<td>无</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>交易速度</strong></td>
+<td>需要等待挑战期</td>
+<td>即时确认</td>
+</tr>
+<tr>
+<td><strong>计算复杂度</strong></td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>Optimistic Rollups</td>
+<td>ZK-Rollups, 隐私保护</td>
+</tr>
+<tr>
+<td><strong>例子</strong></td>
+<td>Arbitrum, Optimism</td>
+<td>zkSync, StarkWare</td>
+</tr>
+</tbody>
+</table>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0xabafa602c72e2d6444dc96048da8db7429b0d061424552e4c6f67b6229f8de1a1.0.0')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0xabafa602c72e2d6444dc96048da8db7429b0d061424552e4c6f67b6229f8de1a1.0.0</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">探索Web3世界</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 10 篇文章
+                            </div>
+                            <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">探索Web3世界</h3>
+                                </div>
+                                <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 10 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是欺诈证明和零知识证明？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是欺诈证明和零知识证明？
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#fraud-proof" 
+                   title="欺诈证明（Fraud Proof）"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    欺诈证明（Fraud Proof）
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 什么是欺诈证明？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 什么是欺诈证明？
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 欺诈证明的工作原理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 欺诈证明的工作原理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 欺诈证明的应用场景"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 欺诈证明的应用场景
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-" 
+           title="4. 欺诈证明的优缺点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 欺诈证明的优缺点
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#zero-knowledge-proof" 
+                   title="零知识证明（Zero-Knowledge Proof）"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    零知识证明（Zero-Knowledge Proof）
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1--1" 
+           title="1. 什么是零知识证明？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 什么是零知识证明？
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--1" 
+           title="2. 零知识证明的工作原理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 零知识证明的工作原理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--1" 
+           title="3. 用一个比喻解释零知识证明的实现"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 用一个比喻解释零知识证明的实现
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4--1" 
+           title="4. 零知识证明的应用场景"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 零知识证明的应用场景
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#5-" 
+           title="5. 零知识证明的优缺点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            5. 零知识证明的优缺点
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-1" 
+                   title="欺诈证明与零知识证明的对比"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    欺诈证明与零知识证明的对比
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是欺诈证明和零知识证明？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是欺诈证明和零知识证明？
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#fraud-proof" 
+                   title="欺诈证明（Fraud Proof）"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    欺诈证明（Fraud Proof）
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 什么是欺诈证明？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 什么是欺诈证明？
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 欺诈证明的工作原理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 欺诈证明的工作原理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 欺诈证明的应用场景"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 欺诈证明的应用场景
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-" 
+           title="4. 欺诈证明的优缺点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 欺诈证明的优缺点
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#zero-knowledge-proof" 
+                   title="零知识证明（Zero-Knowledge Proof）"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    零知识证明（Zero-Knowledge Proof）
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1--1" 
+           title="1. 什么是零知识证明？"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 什么是零知识证明？
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--1" 
+           title="2. 零知识证明的工作原理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 零知识证明的工作原理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--1" 
+           title="3. 用一个比喻解释零知识证明的实现"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 用一个比喻解释零知识证明的实现
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4--1" 
+           title="4. 零知识证明的应用场景"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 零知识证明的应用场景
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#5-" 
+           title="5. 零知识证明的优缺点"
+           class="toc-link toc-link-child"
+           data-level="3">
+            5. 零知识证明的优缺点
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-1" 
+                   title="欺诈证明与零知识证明的对比"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    欺诈证明与零知识证明的对比
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;&#34;,&#34;NftContract&#34;:&#34;0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0xabafa602c72e2d6444dc96048da8db7429b0d061424552e4c6f67b6229f8de1a1.0.0&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:9999,&#34;RoyaltyFee&#34;:0,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:41,&#34;TokenSymbol&#34;:&#34;TLOS&#34;}}"
+         data-title="探索Web3世界：欺诈证明 &amp; 零知识证明"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/jiangjiax/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.51ab9f649b4caa7df89d.bundle.js"></script>
+    
+    <script src="/static/dist/nft.ffb817eee87ea86db734.bundle.js"></script>
+    
+</body>
+</html> 

@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            探索Web3世界：以太坊高级知识——预言机 - 鲤哥的博客 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨预言机（Oracle）的工作原理、类型及其在Web3生态系统中的重要性。">
+    
+    <meta name="keywords" content="以太坊, 区块链, 预言机">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="https://www.li-blog.top/feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">探索Web3世界</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 8
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    探索Web3世界：以太坊高级知识——预言机
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨预言机（Oracle）的工作原理、类型及其在Web3生态系统中的重要性。
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-02-02
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            4 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            以太坊
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            区块链
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            预言机
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <h2 id="heading">什么是预言机？</h2>
+<p>想象一下，你正在玩一个区块链版的&quot;真心话大冒险&quot;游戏。游戏规则是：如果今天下雨，你就得完成一个大冒险任务。但问题来了，区块链就像一个与外界隔绝的密室，它自己无法知道今天是否下雨。这时候，你就需要一个&quot;信使&quot;来告诉区块链外界的天气情况。这个&quot;信使&quot;就是预言机。</p>
+<p>预言机（Oracle）是一种将现实世界的数据引入区块链的技术。它充当了区块链与外部世界之间的桥梁，使得智能合约能够基于真实世界的数据做出决策。</p>
+<h3 id="heading-1">预言机的三大作用</h3>
+<ol>
+<li><strong>数据获取</strong>：从外部世界获取数据并传递给智能合约</li>
+<li><strong>数据验证</strong>：确保获取的数据真实可靠</li>
+<li><strong>数据计算</strong>：对获取的数据进行处理和计算</li>
+</ol>
+<h2 id="heading-2">预言机的类型</h2>
+<p>预言机可以根据其工作方式和数据来源分为几种主要类型：</p>
+<h3 id="1-software-oracles">1. 软件预言机（Software Oracles）</h3>
+<p>就像天气预报APP，软件预言机从互联网获取实时数据，如天气、股票价格、航班信息等。</p>
+<p><strong>例子</strong>：获取ETH当前价格的预言机</p>
+<h3 id="2-hardware-oracles">2. 硬件预言机（Hardware Oracles）</h3>
+<p>就像超市的自动门，硬件预言机通过传感器获取物理世界的数据，如温度、湿度、位置等。</p>
+<p><strong>例子</strong>：用于供应链管理的RFID传感器</p>
+<h3 id="3-inbound-oracles">3. 输入预言机（Inbound Oracles）</h3>
+<p>就像新闻记者，输入预言机将外部数据引入区块链。</p>
+<p><strong>例子</strong>：将体育比赛结果传入区块链的预言机</p>
+<h3 id="4-outbound-oracles">4. 输出预言机（Outbound Oracles）</h3>
+<p>就像邮递员，输出预言机将区块链数据发送到外部世界。</p>
+<p><strong>例子</strong>：触发智能锁开启的预言机</p>
+<h2 id="heading-3">预言机的工作原理</h2>
+<h3 id="1-">1. 数据请求</h3>
+<p>智能合约发出数据请求，就像你向朋友询问今天的天气。</p>
+<h3 id="2-">2. 数据获取</h3>
+<p>预言机从外部数据源获取数据，就像你的朋友查看天气预报。</p>
+<h3 id="3-">3. 数据验证</h3>
+<p>预言机网络验证数据的真实性，就像多个朋友互相确认天气预报是否准确。</p>
+<h3 id="4-">4. 数据返回</h3>
+<p>验证后的数据被返回给智能合约，就像朋友们告诉你今天的天气情况。</p>
+<h3 id="5-">5. 合约执行</h3>
+<p>智能合约基于返回的数据执行相应的逻辑，就像你决定是否带伞出门。</p>
+<h2 id="heading-4">预言机的安全机制</h2>
+<h3 id="1--1">1. 多重数据源</h3>
+<p>就像询问多个朋友以确认信息的真实性，预言机从多个独立的数据源获取数据，提高数据的可靠性。</p>
+<h3 id="2--1">2. 数据签名</h3>
+<p>就像朋友在告诉你信息时附上签名，预言机对获取的数据进行签名，确保数据来源可信。</p>
+<h3 id="3--1">3. 奖惩机制</h3>
+<p>就像对提供错误信息的朋友进行惩罚，预言机网络对提供错误数据的节点进行惩罚，激励节点提供准确数据。</p>
+<h2 id="heading-5">预言机的应用场景</h2>
+<h3 id="1-defi">1. 去中心化金融（DeFi）</h3>
+<p>预言机为DeFi应用提供实时价格数据，如ETH/USD汇率，用于清算和借贷。</p>
+<h3 id="2--2">2. 保险</h3>
+<p>预言机可以获取天气、航班等数据，用于自动理赔。例如，如果航班延误超过2小时，智能合约自动赔付。</p>
+<h3 id="3--2">3. 供应链管理</h3>
+<p>通过硬件预言机追踪货物的位置和状态，提高供应链的透明度和效率。</p>
+<h3 id="4--1">4. 预测市场</h3>
+<p>预言机提供事件结果数据，如选举结果、体育比赛结果，用于结算预测市场。</p>
+<h2 id="heading-6">结语</h2>
+<p>预言机作为连接区块链与现实世界的桥梁，在Web3生态系统中扮演着至关重要的角色。通过预言机，智能合约能够基于真实世界的数据做出决策，极大地扩展了区块链的应用场景。</p>
+<p>在下一篇文章中，我们将探讨以太坊Layer 2扩展解决方案。敬请期待！</p>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0x857a4fc165cfb18c232fc813d862f1549b1d9d8af915a2404a2145a803fb1c7c1.0.0')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0x857a4fc165cfb18c232fc813d862f1549b1d9d8af915a2404a2145a803fb1c7c1.0.0</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">探索Web3世界</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 8 篇文章
+                            </div>
+                            <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">探索Web3世界</h3>
+                                </div>
+                                <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 8 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是预言机？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是预言机？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="预言机的三大作用"
+           class="toc-link toc-link-child"
+           data-level="3">
+            预言机的三大作用
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="预言机的类型"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的类型
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-software-oracles" 
+           title="1. 软件预言机（Software Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 软件预言机（Software Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-hardware-oracles" 
+           title="2. 硬件预言机（Hardware Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 硬件预言机（Hardware Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-inbound-oracles" 
+           title="3. 输入预言机（Inbound Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 输入预言机（Inbound Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-outbound-oracles" 
+           title="4. 输出预言机（Outbound Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 输出预言机（Outbound Oracles）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="预言机的工作原理"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的工作原理
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 数据请求"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 数据请求
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 数据获取"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 数据获取
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 数据验证"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 数据验证
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-" 
+           title="4. 数据返回"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 数据返回
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#5-" 
+           title="5. 合约执行"
+           class="toc-link toc-link-child"
+           data-level="3">
+            5. 合约执行
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-4" 
+                   title="预言机的安全机制"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的安全机制
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1--1" 
+           title="1. 多重数据源"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 多重数据源
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--1" 
+           title="2. 数据签名"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 数据签名
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--1" 
+           title="3. 奖惩机制"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 奖惩机制
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-5" 
+                   title="预言机的应用场景"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的应用场景
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-defi" 
+           title="1. 去中心化金融（DeFi）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 去中心化金融（DeFi）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--2" 
+           title="2. 保险"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 保险
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--2" 
+           title="3. 供应链管理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 供应链管理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4--1" 
+           title="4. 预测市场"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 预测市场
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-6" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是预言机？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是预言机？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="预言机的三大作用"
+           class="toc-link toc-link-child"
+           data-level="3">
+            预言机的三大作用
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="预言机的类型"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的类型
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-software-oracles" 
+           title="1. 软件预言机（Software Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 软件预言机（Software Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-hardware-oracles" 
+           title="2. 硬件预言机（Hardware Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 硬件预言机（Hardware Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-inbound-oracles" 
+           title="3. 输入预言机（Inbound Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 输入预言机（Inbound Oracles）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-outbound-oracles" 
+           title="4. 输出预言机（Outbound Oracles）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 输出预言机（Outbound Oracles）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="预言机的工作原理"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的工作原理
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-" 
+           title="1. 数据请求"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 数据请求
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-" 
+           title="2. 数据获取"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 数据获取
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-" 
+           title="3. 数据验证"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 数据验证
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-" 
+           title="4. 数据返回"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 数据返回
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#5-" 
+           title="5. 合约执行"
+           class="toc-link toc-link-child"
+           data-level="3">
+            5. 合约执行
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-4" 
+                   title="预言机的安全机制"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的安全机制
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1--1" 
+           title="1. 多重数据源"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 多重数据源
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--1" 
+           title="2. 数据签名"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 数据签名
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--1" 
+           title="3. 奖惩机制"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 奖惩机制
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-5" 
+                   title="预言机的应用场景"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    预言机的应用场景
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-defi" 
+           title="1. 去中心化金融（DeFi）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 去中心化金融（DeFi）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2--2" 
+           title="2. 保险"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 保险
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3--2" 
+           title="3. 供应链管理"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 供应链管理
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4--1" 
+           title="4. 预测市场"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 预测市场
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-6" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;&#34;,&#34;NftContract&#34;:&#34;0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0x857a4fc165cfb18c232fc813d862f1549b1d9d8af915a2404a2145a803fb1c7c1.0.0&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:9999,&#34;RoyaltyFee&#34;:0,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:41,&#34;TokenSymbol&#34;:&#34;TLOS&#34;}}"
+         data-title="探索Web3世界：以太坊高级知识——预言机"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/jiangjiax/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.51ab9f649b4caa7df89d.bundle.js"></script>
+    
+    <script src="/static/dist/nft.ffb817eee87ea86db734.bundle.js"></script>
+    
+</body>
+</html> 

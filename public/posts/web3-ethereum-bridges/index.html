@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            探索Web3世界：以太坊高级知识——链桥 - 鲤哥的博客 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨以太坊链桥的工作原理、类型及其在Web3生态系统中的重要性。">
+    
+    <meta name="keywords" content="以太坊, 区块链, 链桥">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="https://www.li-blog.top/feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">探索Web3世界</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 7
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    探索Web3世界：以太坊高级知识——链桥
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨以太坊链桥的工作原理、类型及其在Web3生态系统中的重要性。
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-02-01
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            4 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            以太坊
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            区块链
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            链桥
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <h2 id="heading">什么是链桥？</h2>
+<p>想象一下，你站在一条宽阔的河流边，想要到达对岸。河上没有桥，你只能选择游泳或者坐船。链桥就像是连接两条不同区块链的桥梁，让你可以安全、便捷地在不同的区块链之间转移资产和数据。</p>
+<p>链桥（Bridge）是一种允许不同区块链之间进行互操作的技术。它使得用户可以在不同的区块链网络之间转移代币、数据和智能合约，从而打破了区块链之间的孤岛效应。</p>
+<h3 id="heading-1">链桥的三大作用</h3>
+<ol>
+<li><strong>资产跨链</strong>：将代币从一条区块链转移到另一条区块链</li>
+<li><strong>数据互通</strong>：在不同区块链之间共享和验证数据</li>
+<li><strong>功能扩展</strong>：利用其他区块链的特性来扩展应用功能</li>
+</ol>
+<h2 id="heading-2">链桥的类型</h2>
+<p>链桥可以根据其信任模型和架构分为几种主要类型：</p>
+<h3 id="1-custodial-bridges">1. 托管式链桥（Custodial Bridges）</h3>
+<p>就像把贵重物品交给银行保管，托管式链桥依赖于一个中心化的第三方来管理跨链资产。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>简单易用，交易速度快</li>
+<li>存在中心化风险，需要信任第三方</li>
+</ul>
+<h3 id="2-non-custodial-bridges">2. 非托管式链桥（Non-custodial Bridges）</h3>
+<p>这就像使用智能保险箱，只有你自己掌握钥匙。非托管式链桥通过智能合约和密码学技术实现跨链，无需信任第三方。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>去中心化，安全性高</li>
+<li>技术复杂，交易速度较慢</li>
+</ul>
+<h3 id="3-native-bridges">3. 原生链桥（Native Bridges）</h3>
+<p>就像官方修建的跨海大桥，原生链桥是由区块链项目方官方提供的跨链解决方案。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>官方支持，集成度高</li>
+<li>仅限于特定区块链生态</li>
+</ul>
+<h3 id="4-general-purpose-bridges">4. 通用链桥（General Purpose Bridges）</h3>
+<p>这就像一座多功能立交桥，可以连接多条不同的道路。通用链桥支持多种区块链之间的互操作。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>支持多链，灵活性高</li>
+<li>可能存在兼容性问题</li>
+</ul>
+<h2 id="heading-3">链桥的实现方案</h2>
+<p>链桥的实现方式多种多样，但最常见的三种方法如下：</p>
+<h3 id="1-lock-and-mint">1. 锁定并铸币（Lock and Mint）</h3>
+<p><strong>工作原理</strong>：</p>
+<ol>
+<li>用户在源链上将代币锁定在智能合约中</li>
+<li>链桥在目标链上铸造等量的包装代币（Wrapped Token）</li>
+<li>当用户想要取回代币时，销毁包装代币，解锁源链上的原始代币</li>
+</ol>
+<h3 id="2-burn-and-mint">2. 销毁并铸币（Burn and Mint）</h3>
+<p><strong>工作原理</strong>：</p>
+<ol>
+<li>用户在源链上销毁代币</li>
+<li>链桥在目标链上铸造等量的代币</li>
+<li>当用户想要返回时，在目标链上销毁代币，在源链上重新铸造</li>
+</ol>
+<h3 id="3-atomic-swap">3. 原子交换（Atomic Swap）</h3>
+<p><strong>工作原理</strong>：</p>
+<ol>
+<li>双方各自将代币锁定在智能合约中</li>
+<li>设置一个时间窗口</li>
+<li>如果双方都在规定时间内完成交易，交换自动完成；否则，代币退回原主</li>
+</ol>
+<h2 id="heading-4">链桥的安全机制</h2>
+<h3 id="1-multi-signature">1. 多重签名（Multi-Signature）</h3>
+<p>就像银行的保险箱需要多把钥匙才能打开。链桥的资产也由多个密钥控制，必须获得足够数量的签名才能动用资金。</p>
+<h3 id="2-zero-knowledge-proof">2. 零知识证明（Zero-Knowledge Proof）</h3>
+<p>就像你向朋友证明你知道一个秘密，但不需要告诉他秘密是什么。链桥可以用这种方式验证交易的有效性，而不泄露敏感信息。</p>
+<h3 id="3-decentralized-oracle">3. 去中心化预言机（Decentralized Oracle）</h3>
+<p>就像一群公正的裁判，他们共同验证比赛结果。去中心化预言机网络可以验证跨链交易的真实性，防止欺诈行为。</p>
+<h2 id="heading-5">结语</h2>
+<p>链桥作为连接不同区块链的桥梁，在Web3生态系统中扮演着至关重要的角色。通过链桥，我们可以实现资产和数据的自由流动，打破区块链之间的壁垒，构建更加开放和互联的Web3世界。</p>
+<p>在下一篇文章中，我们将探讨预言机相关知识。敬请期待！</p>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0x4bf28c659efdcd0758db6647bfb9f1e69a9f6a4543610ddb5564ac5b5ff448301.0.0')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0x4bf28c659efdcd0758db6647bfb9f1e69a9f6a4543610ddb5564ac5b5ff448301.0.0</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">探索Web3世界</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 7 篇文章
+                            </div>
+                            <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">探索Web3世界</h3>
+                                </div>
+                                <a href="/series/%e6%8e%a2%e7%b4%a2Web3%e4%b8%96%e7%95%8c" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">探索Web3世界</span> 系列的第 7 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是链桥？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是链桥？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="链桥的三大作用"
+           class="toc-link toc-link-child"
+           data-level="3">
+            链桥的三大作用
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="链桥的类型"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的类型
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-custodial-bridges" 
+           title="1. 托管式链桥（Custodial Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 托管式链桥（Custodial Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-non-custodial-bridges" 
+           title="2. 非托管式链桥（Non-custodial Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 非托管式链桥（Non-custodial Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-native-bridges" 
+           title="3. 原生链桥（Native Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 原生链桥（Native Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-general-purpose-bridges" 
+           title="4. 通用链桥（General Purpose Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 通用链桥（General Purpose Bridges）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="链桥的实现方案"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的实现方案
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-lock-and-mint" 
+           title="1. 锁定并铸币（Lock and Mint）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 锁定并铸币（Lock and Mint）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-burn-and-mint" 
+           title="2. 销毁并铸币（Burn and Mint）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 销毁并铸币（Burn and Mint）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-atomic-swap" 
+           title="3. 原子交换（Atomic Swap）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 原子交换（Atomic Swap）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-4" 
+                   title="链桥的安全机制"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的安全机制
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-multi-signature" 
+           title="1. 多重签名（Multi-Signature）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 多重签名（Multi-Signature）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-zero-knowledge-proof" 
+           title="2. 零知识证明（Zero-Knowledge Proof）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 零知识证明（Zero-Knowledge Proof）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-decentralized-oracle" 
+           title="3. 去中心化预言机（Decentralized Oracle）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 去中心化预言机（Decentralized Oracle）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-5" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#heading" 
+                   title="什么是链桥？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是链桥？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#heading-1" 
+           title="链桥的三大作用"
+           class="toc-link toc-link-child"
+           data-level="3">
+            链桥的三大作用
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-2" 
+                   title="链桥的类型"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的类型
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-custodial-bridges" 
+           title="1. 托管式链桥（Custodial Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 托管式链桥（Custodial Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-non-custodial-bridges" 
+           title="2. 非托管式链桥（Non-custodial Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 非托管式链桥（Non-custodial Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-native-bridges" 
+           title="3. 原生链桥（Native Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 原生链桥（Native Bridges）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#4-general-purpose-bridges" 
+           title="4. 通用链桥（General Purpose Bridges）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            4. 通用链桥（General Purpose Bridges）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-3" 
+                   title="链桥的实现方案"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的实现方案
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-lock-and-mint" 
+           title="1. 锁定并铸币（Lock and Mint）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 锁定并铸币（Lock and Mint）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-burn-and-mint" 
+           title="2. 销毁并铸币（Burn and Mint）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 销毁并铸币（Burn and Mint）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-atomic-swap" 
+           title="3. 原子交换（Atomic Swap）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 原子交换（Atomic Swap）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-4" 
+                   title="链桥的安全机制"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    链桥的安全机制
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#1-multi-signature" 
+           title="1. 多重签名（Multi-Signature）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            1. 多重签名（Multi-Signature）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#2-zero-knowledge-proof" 
+           title="2. 零知识证明（Zero-Knowledge Proof）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            2. 零知识证明（Zero-Knowledge Proof）
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#3-decentralized-oracle" 
+           title="3. 去中心化预言机（Decentralized Oracle）"
+           class="toc-link toc-link-child"
+           data-level="3">
+            3. 去中心化预言机（Decentralized Oracle）
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#heading-5" 
+                   title="结语"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    结语
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;&#34;,&#34;NftContract&#34;:&#34;0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0x4bf28c659efdcd0758db6647bfb9f1e69a9f6a4543610ddb5564ac5b5ff448301.0.0&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:9999,&#34;RoyaltyFee&#34;:0,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:41,&#34;TokenSymbol&#34;:&#34;TLOS&#34;}}"
+         data-title="探索Web3世界：以太坊高级知识——链桥"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/jiangjiax/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.51ab9f649b4caa7df89d.bundle.js"></script>
+    
+    <script src="/static/dist/nft.ffb817eee87ea86db734.bundle.js"></script>
+    
+</body>
+</html> 

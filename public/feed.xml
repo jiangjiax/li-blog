@@ -5,7 +5,35 @@
     <link>https://www.li-blog.top</link>
     <description>最新文章更新</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 27 Jan 2025 18:53:07 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Feb 2025 17:25:39 +0800</lastBuildDate>
+    <item>
+      <title>探索Web3世界：欺诈证明 &amp; 零知识证明</title>
+      <link>https://www.li-blog.top/web3-fraud-proof-zk-proof</link>
+      <description>欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨欺诈证明（Fraud Proof）和零知识证明（Zero-Knowledge Proof）的工作原理、应用场景及其在Web3生态系统中的重要性。</description>
+      <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.li-blog.top/web3-fraud-proof-zk-proof</guid>
+    </item>
+    <item>
+      <title>探索Web3世界：以太坊Layer 2</title>
+      <link>https://www.li-blog.top/web3-ethereum-layer2</link>
+      <description>欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨以太坊Layer 2扩展解决方案的工作原理、类型及其在Web3生态系统中的重要性。</description>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.li-blog.top/web3-ethereum-layer2</guid>
+    </item>
+    <item>
+      <title>探索Web3世界：以太坊高级知识——预言机</title>
+      <link>https://www.li-blog.top/web3-ethereum-oracles</link>
+      <description>欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨预言机（Oracle）的工作原理、类型及其在Web3生态系统中的重要性。</description>
+      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.li-blog.top/web3-ethereum-oracles</guid>
+    </item>
+    <item>
+      <title>探索Web3世界：以太坊高级知识——链桥</title>
+      <link>https://www.li-blog.top/web3-ethereum-bridges</link>
+      <description>欢迎回到《探索Web3世界》系列文章，我是鲤哥。在本篇文章中，我们将深入探讨以太坊链桥的工作原理、类型及其在Web3生态系统中的重要性。</description>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.li-blog.top/web3-ethereum-bridges</guid>
+    </item>
     <item>
       <title>探索web3世界：Solidity 完全入门指南</title>
       <link>https://www.li-blog.top/solidity-guide</link>
@@ -47,34 +75,6 @@
       <description>在上一节中，我们介绍了Web3的概念及其落地领域，并提到Web3的核心基础设施——区块链技术。本节将深入探讨区块链技术中的两个关键组成部分：哈希算法与挖矿。</description>
       <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://www.li-blog.top/blockchain-algorithm-mining</guid>
-    </item>
-    <item>
-      <title>探索Web3世界：从Web1到Web3的演进与未来</title>
-      <link>https://www.li-blog.top/web3-what</link>
-      <description>Web3是什么？它是什么时候诞生的？它是如何工作的？这些问题将会在本文中得到解答。</description>
-      <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://www.li-blog.top/web3-what</guid>
-    </item>
-    <item>
-      <title>Stars 入门</title>
-      <link>https://www.li-blog.top/welcome-to-stars</link>
-      <description>介绍 Stars 的基本使用方法</description>
-      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://www.li-blog.top/welcome-to-stars</guid>
-    </item>
-    <item>
-      <title>Stars 文章的元数据介绍</title>
-      <link>https://www.li-blog.top/metadata-guide</link>
-      <description>详细介绍 Stars 文章的元数据配置和使用方法</description>
-      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://www.li-blog.top/metadata-guide</guid>
-    </item>
-    <item>
-      <title>Stars Markdown 语法</title>
-      <link>https://www.li-blog.top/markdown-guide</link>
-      <description>详细介绍 Stars 支持的 Markdown 语法和使用方法</description>
-      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://www.li-blog.top/markdown-guide</guid>
     </item>
   </Channel>
 </rss>

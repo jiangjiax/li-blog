@@ -16,6 +16,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.li-blog.top/posts/web3-fraud-proof-zk-proof</loc>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.li-blog.top/posts/web3-ethereum-layer2</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.li-blog.top/posts/web3-ethereum-oracles</loc>
+    <lastmod>2025-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.li-blog.top/posts/web3-ethereum-bridges</loc>
+    <lastmod>2025-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.li-blog.top/posts/solidity-guide</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -64,7 +88,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.li-blog.top/posts/metadata-guide</loc>
+    <loc>https://www.li-blog.top/posts/theme-guide</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -76,7 +100,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.li-blog.top/posts/theme-guide</loc>
+    <loc>https://www.li-blog.top/posts/metadata-guide</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
