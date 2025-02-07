@@ -11,7 +11,7 @@ tags:
     - 零知识证明
 title: 探索Web3世界：欺诈证明 & 零知识证明
 verification:
-    arweaveId: ""
+    arweaveId: "NOyMi48OJYGXJVzlAKWqnh75N3KemHdPDGvH6Jz_D6A"
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0xabafa602c72e2d6444dc96048da8db7429b0d061424552e4c6f67b6229f8de1a1.0.0

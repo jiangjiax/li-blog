@@ -10,7 +10,7 @@ tags:
     - 预言机
 title: 探索Web3世界：以太坊高级知识——预言机
 verification:
-    arweaveId: ""
+    arweaveId: "HDSmdXU_RXWDHpomz3y0quFkGWDB7KahLyqMsTR8xEQ"
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x857a4fc165cfb18c232fc813d862f1549b1d9d8af915a2404a2145a803fb1c7c1.0.0

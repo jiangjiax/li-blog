@@ -10,7 +10,7 @@ tags:
     - 链桥
 title: 探索Web3世界：以太坊高级知识——链桥
 verification:
-    arweaveId: ""
+    arweaveId: "HKUvTBegDWbLF9O_hBKs_HNx7uzFqBW-Wh7uvdFTlfo"
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x4bf28c659efdcd0758db6647bfb9f1e69a9f6a4543610ddb5564ac5b5ff448301.0.0

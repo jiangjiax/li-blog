@@ -14,7 +14,7 @@ verification:
     arweaveId: uAUrXIBsIUwSr2nYLHW48JUtNswmA6CENEY2_-pBHZM
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
-    contentHash: 0x47c54e59d3e44e9b2ede352ca79e99a7e05a5f7ff9d1208e84a2162583bee4bb1.0.0
+    contentHash: 0x583d6856213f54d1a608178390745a0adfcfc5d8925867a8520f19b594ef75801.0.0
     nft:
         price: "0"
         maxSupply: 9999
@@ -22,7 +22,7 @@ verification:
         onePerAddress: true
         version: 1.0.0
         chainId: 41
-        tokenSymbol: "TLOS"
+        tokenSymbol: TLOS
 ---
 
 ## 基础知识
@@ -31,7 +31,9 @@ verification:
 
 ### 为什么选择 Solidity？
 
-想象一下，如果你想创建一个完全去中心化的应用，比如一个不需要中间商的二手交易平台，或者一个公平透明的抽奖系统，这时候就需要用到智能合约。而 Solidity 就是最流行的智能合约编程语言。
+如果你想创建一个完全去中心化的应用，比如一个不需要中间商的二手交易平台，或者一个公平透明的抽奖系统，这时候就需要用到智能合约。
+
+而 Solidity 就是最流行的智能合约编程语言。
 
 使用 Solidity，你可以：
 - 创建去中心化应用（DApps）：比如去中心化交易所、NFT 市场等

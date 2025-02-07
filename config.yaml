@@ -21,6 +21,9 @@ series:
   - name: "Go语言教程"
     description: "Go 语言相关的教程"
     order: 3
+  - name: "代码专业之道"
+    description: "探讨如何写出整洁、可读、可维护的代码"
+    order: 4
 
 # 个人信息
 author:

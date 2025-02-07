@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+    <title>
+        
+            对于TDD(测试驱动开发)的理解与实践 - 鲤哥的博客 - 鲤哥的博客
+        
+    </title>
+    
+    
+    <meta name="description" content="深入理解测试驱动开发(TDD)的概念、原则和实践方法">
+    
+    <meta name="keywords" content="TDD, 测试, Go, 最佳实践">
+    
+    <meta name="author" content="蒋鲤">
+    
+    
+    <meta name="static-path" content="../../static">
+    
+    
+    <link rel="stylesheet" href="/static/css/styles.built.css">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" 
+        title="鲤哥的博客" 
+        href="https://www.li-blog.top/feed.xml">
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-full flex flex-col">
+    
+    <div id="stars-container" class="stars fixed inset-0 z-0 pointer-events-none"></div>
+
+    
+    
+<header class="fixed top-0 w-full bg-stars-secondary/80 backdrop-blur-md z-50 border-b border-stars-accent/10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" 
+               class="text-xl font-bold text-stars-accent hover:text-stars-gold transition-all duration-300
+                      relative group">
+                <i class="fas fa-star mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                <span class="group-hover:tracking-wider transition-all duration-300">Stars</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-link group">
+                <span class="relative">
+                    首页
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/posts" class="nav-link group">
+                <span class="relative">
+                    文章
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+            <a href="/tags" class="nav-link group">
+                <span class="relative">
+                    标签云
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-stars-accent group-hover:w-full transition-all duration-300"></span>
+                </span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+    
+    <main class="flex-grow pt-20 relative z-10">
+        
+<article class="container mx-auto px-4 pt-2 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        
+        <div class="lg:col-span-9">
+            
+            <header class="relative mb-6 lg:mb-10 p-6 lg:p-8 bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10
+                         before:absolute before:inset-0 before:bg-gradient-to-br before:from-stars-accent/5 before:to-transparent before:rounded-2xl">
+                
+                
+                <div class="relative mb-8">
+                    <a href="#series-nav" 
+                       class="inline-flex items-center gap-3 px-4 py-2 rounded-xl
+                             bg-stars-primary/30 backdrop-blur-sm
+                             border border-stars-accent/20 text-stars-accent
+                             hover:bg-stars-accent/10 hover:scale-[1.02] 
+                             transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono">代码专业之道</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-sm rounded-full bg-stars-accent/10 group-hover:bg-stars-accent/20">
+                            Part 1
+                        </span>
+                        <i class="fas fa-chevron-down text-xs opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
+                
+
+                
+                <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-stars-accent mb-4 lg:mb-6
+                           leading-tight tracking-tight font-display">
+                    对于TDD(测试驱动开发)的理解与实践
+                </h1>
+
+                
+                
+                <p class="relative text-base lg:text-lg text-stars-muted mb-6 lg:mb-8 leading-relaxed max-w-3xl">
+                    深入理解测试驱动开发(TDD)的概念、原则和实践方法
+                </p>
+                
+
+                
+                <div class="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                    
+                    <div class="flex items-center gap-6 text-sm text-stars-muted">
+                        <time class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-calendar-alt"></i>
+                            2025-01-08
+                        </time>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stars-primary/20">
+                            <i class="far fa-clock"></i>
+                            5 min read
+                        </span>
+                    </div>
+
+                    
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            TDD
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            测试
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            Go
+                        </span>
+                        
+                        <span class="px-3 py-1.5 text-sm rounded-lg
+                                   bg-stars-primary/20 text-stars-muted
+                                   border border-stars-accent/10
+                                   hover:bg-stars-accent/5 hover:text-stars-accent
+                                   transition-colors duration-300 cursor-default">
+                            <i class="fas fa-tag text-xs mr-2 opacity-70"></i>
+                            最佳实践
+                        </span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            
+            <div class="relative group space-y-8 lg:space-y-12">
+                
+                <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-b border-stars-accent/10
+                                bg-gradient-to-r from-stars-accent/5 to-transparent">
+                        <div class="flex items-center gap-3 text-stars-accent">
+                            <i class="fas fa-shield-check"></i>
+                            <span class="text-sm">此文章已上链验证</span>
+                        </div>
+                        <button onclick="scrollToVerification()" 
+                                class="px-4 py-2 rounded-lg bg-stars-accent/10 text-stars-accent 
+                                       hover:bg-stars-accent/20 transition-all duration-300">
+                            <span class="flex items-center gap-2">
+                                <span>查看 NFT 信息</span>
+                            </span>
+                        </button>
+                    </div>
+                    
+
+                    
+                    <div class="content p-5 sm:p-6 lg:p-8 prose prose-stars max-w-none">
+                        <h2 id="tdd">什么是TDD？</h2>
+<p>测试驱动开发，英文全称 Test-Driven Development，简称 TDD，是一种有别于传统的开发方法。</p>
+<p>简单来说：TDD 这种开发方法，就是让我们在设计一个功能时，先写用于测试这个功能的单元测试代码，再写具体实现的产品代码。</p>
+<p>具体的使用方式是这样的：我们先写好一个单元测试的一小部分代码，然后开始编写这个功能的产品代码，让这些测试能够编译，产品代码够用即可，然后再回头接着写单元测试代码。这个循环不断反复。写一些测试代码，然后再写一些产品代码。这两套代码同步增长，互为补充。测试代码之匹配于产品代码，就如抗体之匹配于抗原一样。</p>
+<h2 id="tdd-1">TDD的三项法则</h2>
+<ol>
+<li>在编好失败单元测试之前，不要编写任何产品代码。</li>
+<li>只要有一个单元测试失败了，就不要再写测试代码；无法通过编译也是一种失败。</li>
+<li>产品代码恰好能够让当前失败的单元测试成功通过即可，不要多写。</li>
+</ol>
+<h2 id="tdd-2">为什么要使用TDD？</h2>
+<h3 id="tdd-3">TDD是专业主义的保障</h3>
+<p>什么是专业主义？在《程序员的职业素养》一书中，作者提到：&quot;代码中难免会出现 bug，但这并不意味着你不用对它们负责；没人能写出完美的软件，但这并不表示你不用对不完美负责。所谓专业人士，就是能对自己犯下的错误负责的人。失误率永远不可能等于零，但你有责任让它无限接近零。&quot;</p>
+<p>作为一个有追求的程序员，我们应该达成一个共识，那就是没有对例行程序进行测试就交付软件是不负责任的。如果产品有众多错误，对于开发这个产品的我们来说，就是一种耻辱。公司付给我们薪水，是为了要我们制造出如预期一般可以正常使用的产品，这是首要条件。</p>
+<p>那么我们如何才能将错误率降到最低呢？很简单，不断的测试，以确保我们的正确。不是在做完之后点几下鼠标，而是在做的过程中就测试，不断的测试，几乎每30秒就测试一次，并且我们需要尽量高覆盖的单元测试，因为如果无法确保90%以上的覆盖，我们就难以放心。</p>
+<p>TDD 就是这样做的，只要使用 TDD 的方法来编写程序，我们就可以得到一个覆盖90%以上的经过不断测试的产品。这保障了我们的专业主义。</p>
+<h3 id="tdd-4">TDD可以增加工作效率</h3>
+<p>你是否认为编写测试会浪费太多的时间，当工期很紧急时，我们只能放弃测试埋头于业务代码？</p>
+<p>首先，编写测试绝对不是浪费时间的行为。如果没有测试，我们可能会面临多次的返工。并且通常在一个项目中，后期维护与修改的时间要大于开发的时间。编写测试，可以减少我们的返工次数，提高我们后期维护的工作效率。</p>
+<p>更重要的是，使用 TDD 的方法来编写测试，是非常容易的。有些代码你可能会觉得难以测试，但那是因为在设计时就没考虑如何测试，唯一的解决办法就是要设计出易于测试的代码，最好是先写测试，再写要测的代码，这也就是测试驱动开发（TDD）。</p>
+<h3 id="tdd-5">TDD让我们无所畏惧</h3>
+<p>看这张图：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/webp/388227/1708242657146-25160107-b84a-4b87-8171-beb1bd9928d4.webp" alt="TDD" /></p>
+<p>无论是他人的代码，还是我们自己写的代码，过了一段时间后，我们很可能会丧失修改它的自信，因为我们总是会担心我们的修改会破坏一些原有的设计。有了 TDD 就不一样了，当看见糟糕的代码时，就可以放手去改，因为我们只要运行一下单元测试就可以确定修改是否正确了！</p>
+<p>最令人安心的一件事是，在任何时刻，一旦修改了程序的任何部分，只需再次运行全部的单元测试，通过了，就可以交付了。</p>
+<h3 id="tdd-6">TDD让代码变得更优雅</h3>
+<p>先写测试，会迫使你去考虑更好的设计。这样你就不会去随意调用函数，增加耦合度了，因为你需要确保产品代码可以通过它对应的测试。</p>
+<h2 id="tdd-7">TDD实践</h2>
+<p>以下将使用 Go 语言进行 TDD 实践。</p>
+<h3 id="tdd-8">使用TDD编写函数</h3>
+<p>假设有以下需求：我们需要编写一个工具函数，用于将字符串数组转化为逗号分割的字符串形式  <code>[&quot;str1&quot;,&quot;str2&quot;,&quot;str3&quot;]</code> &gt;&gt; <code>&quot;str1,str2,str3&quot;</code>。</p>
+<p>打算把这个工具函数放在 <code>util/common.go</code> 文件中，于是新建一个文件 <code>util/common_test.go</code> 用于放置单元测试。</p>
+<p>开始编写单元测试：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">utils</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;reflect&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestStrListToString</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">StrList</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;str1&#34;</span>, <span style="color:#e6db74">&#34;str2&#34;</span>, <span style="color:#e6db74">&#34;str3&#34;</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">StrListToString</span>(<span style="color:#a6e22e">StrList</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">want</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;str1,str2,str3&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">want</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;The values of %v is not %v\n&#34;</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">want</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>编写产品代码：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">StrListToString</span>(<span style="color:#a6e22e">strList</span> []<span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">str</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">strList</span>) &gt; <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">strList</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">str</span> = <span style="color:#a6e22e">str</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">v</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>运行测试：</p>
+<p>测试失败了，我们得到了 <code>,str1,str2,str3</code> 而不是预想的 <code>str1,str2,str3</code>。</p>
+<p>修改产品代码：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">StrListToString</span>(<span style="color:#a6e22e">strList</span> []<span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">str</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">strList</span>) &gt; <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">strList</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">str</span> = <span style="color:#a6e22e">v</span>
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">str</span> = <span style="color:#a6e22e">str</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">v</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>再次运行测试：</p>
+<p>成功了！</p>
+<p>我们可以再新增其他的测试用例：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">utils</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;reflect&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">testStrListToStringCase</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strList</span> []<span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">want</span>    <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">testStrListToStringGroup</span> = []<span style="color:#a6e22e">testStrListToStringCase</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 测试用例1:单个英文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">strList</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;str1&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">want</span>:    <span style="color:#e6db74">&#34;str1&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 测试用例2:多个英文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">strList</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;str1&#34;</span>, <span style="color:#e6db74">&#34;str2&#34;</span>, <span style="color:#e6db74">&#34;str3&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">want</span>:    <span style="color:#e6db74">&#34;str1,str2,str3&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 测试用例3:逗号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">strList</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;a,b,c&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">want</span>:    <span style="color:#e6db74">&#34;a,b,c&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 测试用例4:汉字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">strList</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;一二三四五&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">want</span>:    <span style="color:#e6db74">&#34;一二三四五&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 测试用例5:空字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">strList</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">want</span>:    <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestStrListToString</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">test</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">testStrListToStringGroup</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">StrListToString</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">strList</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">want</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;The values of %v is not %v\n&#34;</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">want</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>运行测试：</p>
+<p>成功。</p>
+<p>使用 Go 的 testing 包，我们可以方便的查看测试覆盖率，只需要运行 <code>go test -cover</code> 即可。</p>
+<p>还可以使用 <code>go test -cover -coverprofile=test_report.out</code> 导出报告文件，然后使用 <code>go tool cover -html=test_report.out</code> 以 HTML 的方式打开测试报告文件。</p>
+<h3 id="tdd-9">使用TDD编写接口</h3>
+<p>假设有以下需求：我们需要编写一个接口，通过调用这个接口创建一个运营渠道，渠道需要字段（渠道名称，联系人，手机号）。</p>
+<p>可以使用 go 的 httptest 接口进行测试，这样无需启动 web server 就可以发送一个真正的 http request。</p>
+<p>编写测试：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#75715e">// 用于获取测试用户 token
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetAuthorization</span>(<span style="color:#a6e22e">userId</span> <span style="color:#66d9ef">string</span>) (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">claims</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">JWTClaims</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">UserID</span>: <span style="color:#a6e22e">userId</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">GetToken</span>(<span style="color:#a6e22e">claims</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">token</span>, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performRequest</span>(<span style="color:#a6e22e">param</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">token</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">r</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handler</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">path</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">httptest</span>.<span style="color:#a6e22e">ResponseRecorder</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">jsonByte</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">param</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">NewRequest</span>(<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">path</span>, <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">jsonByte</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">httptest</span>.<span style="color:#a6e22e">NewRecorder</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">context</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Context</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#a6e22e">token</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span> = <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">WithContext</span>(<span style="color:#a6e22e">context</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">req</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">w</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestCreateChannel</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;code&#34;</span>: float64(<span style="color:#ae81ff">200</span>),
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">param</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">param</span>[<span style="color:#e6db74">&#34;name&#34;</span>] = <span style="color:#e6db74">&#34;name&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">param</span>[<span style="color:#e6db74">&#34;contact&#34;</span>] = <span style="color:#e6db74">&#34;123&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">param</span>[<span style="color:#e6db74">&#34;phone_number&#34;</span>] = <span style="color:#e6db74">&#34;111&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">InitRouterAdmin</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">tokenErr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">GetAuthorization</span>(<span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">tokenErr</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;获取测试用户token失败:%v&#34;</span>, <span style="color:#a6e22e">tokenErr</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">performRequest</span>(<span style="color:#a6e22e">param</span>, <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">router</span>, <span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;/admin/v1/user/create_channel&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Code</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">response</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>([]byte(<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">String</span>()), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">response</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">exists</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">response</span>[<span style="color:#e6db74">&#34;code&#34;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">Nil</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">True</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">exists</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">body</span>[<span style="color:#e6db74">&#34;code&#34;</span>], <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>如果接口需要用到数据库，可以用 <code>init()</code> 启动。</p>
+<p>编写产品代码：</p>
+<pre style="color:#f8f8f2;background-color:#272822;"><code><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ADMINUSER</span>) <span style="color:#a6e22e">CreateChannel</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Context</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">response</span> = new(<span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">BaseResp</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">code</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">request</span> = new(<span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">CreateChannelRequest</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">code</span>, <span style="color:#a6e22e">response</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">apireturn</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errs</span>.<span style="color:#a6e22e">ParameterError</span>(<span style="color:#e6db74">&#34;传参有误&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Code</span> = <span style="color:#a6e22e">apireturn</span>.<span style="color:#a6e22e">ErrorCode</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Msg</span> = <span style="color:#a6e22e">apireturn</span>.<span style="color:#a6e22e">Msg</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span> = <span style="color:#a6e22e">apireturn</span>.<span style="color:#a6e22e">Code</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ShouldBind</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">request</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">CatChannels</span> <span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">CatChannels</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">CatChannels</span>.<span style="color:#a6e22e">Name</span> = <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">Name</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">CatChannels</span>.<span style="color:#a6e22e">Contact</span> = <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">Contact</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">CatChannels</span>.<span style="color:#a6e22e">PhoneNumber</span> = <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">PhoneNumber</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">ChannelAdd</span>(<span style="color:#a6e22e">CatChannels</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">ret</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errs</span>.<span style="color:#a6e22e">UnknownError</span>(<span style="color:#e6db74">&#34;创建渠道失败&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Code</span> = <span style="color:#a6e22e">ret</span>.<span style="color:#a6e22e">ErrorCode</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Msg</span> = <span style="color:#a6e22e">ret</span>.<span style="color:#a6e22e">Msg</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">code</span> = <span style="color:#a6e22e">ret</span>.<span style="color:#a6e22e">Code</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Code</span> = <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Msg</span> = <span style="color:#e6db74">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">code</span> = <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre><p>运行测试：</p>
+<p>成功了。</p>
+
+                    </div>
+
+                    
+                    <div class="flex items-center justify-between gap-4 p-4 lg:p-6 border-t border-stars-accent/10
+                                bg-gradient-to-br from-transparent to-stars-accent/5">
+                        
+                        <button onclick="share()" 
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享文章</span>
+                        </button>
+
+                        
+                        
+                        <button onclick="copyHash('0x269e4c75455732104bec4174f8d6bbffc7ed0b1bc5e55fca46c6c23c77c15ad41.0.0')"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                                       bg-stars-primary/30 backdrop-blur-sm
+                                       border border-stars-accent/20 
+                                       text-stars-accent hover:bg-stars-accent/10
+                                       hover:scale-[1.02] active:scale-[0.98]
+                                       transition-all duration-300
+                                       group">
+                            <i class="fas fa-fingerprint text-stars-accent/70 group-hover:text-stars-accent"></i>
+                            <code class="font-mono text-sm truncate max-w-[150px]">0x269e4c75455732104bec4174f8d6bbffc7ed0b1bc5e55fca46c6c23c77c15ad41.0.0</code>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                
+                
+
+<div class="newsletter-container bg-stars-secondary/80 backdrop-blur-sm rounded-2xl 
+            border border-stars-accent/10 p-6 my-8">
+    <h3 class="text-xl font-bold text-stars-accent mb-3">订阅更新</h3>
+    <p class="text-stars-muted mb-4">订阅获取最新文章更新</p>
+    
+    
+    <form
+        action="https://buttondown.email/api/emails/embed-subscribe/lige"
+        method="post"
+        target="popupwindow"
+        class="flex gap-2"
+        onsubmit="window.open('https://buttondown.email/lige', 'popupwindow')"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-2 rounded-xl bg-stars-primary/30 
+                   border border-stars-accent/20 text-stars-accent
+                   focus:border-stars-accent focus:outline-none"
+            required
+        >
+        <button 
+            type="submit"
+            class="px-6 py-2 rounded-xl bg-stars-accent/10 text-stars-accent
+                   hover:bg-stars-accent/20 transition-all duration-300"
+        >
+            订阅
+        </button>
+    </form>
+</div>
+
+
+                
+                
+                
+                <div id="verification" class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 overflow-hidden">
+                    
+                    <div class="p-6 lg:p-8 border-b border-stars-accent/10 bg-gradient-to-br from-stars-accent/5 to-transparent">
+                        <div class="flex items-center gap-3 text-stars-accent mb-2">
+                            <h3 class="text-xl font-bold">链上验证</h3>
+                        </div>
+                        <p class="text-stars-muted text-sm leading-relaxed">
+                            此文章已被永久存储在区块链上，并由其创作者进行了签名验证。您可以查看相关证明，也可以将其铸造为 NFT 收藏。
+                        </p>
+                    </div>
+
+                    
+                    <div class="p-6 lg:p-8">
+                        
+                        <div class="grid gap-4 sm:grid-cols-2 mb-8">
+                            
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">创作者地址</div>
+                                <code class="text-stars-accent break-all text-sm">0x16572b97410200e79AB6c9423F8d9778F0Fb9C54</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">Arweave 交易</div>
+                                <code class="text-stars-accent break-all text-sm">f5pkYOGeFg5UYEwAkqGzFvVVepOWVK5gijX6s78tGBI</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">NFT 合约</div>
+                                <code class="text-stars-accent break-all text-sm">0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369</code>
+                            </div>
+                            
+
+                            
+                            <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                <div class="text-stars-muted text-sm mb-2">内容哈希</div>
+                                <code class="text-stars-accent break-all text-sm">0x269e4c75455732104bec4174f8d6bbffc7ed0b1bc5e55fca46c6c23c77c15ad41.0.0</code>
+                            </div>
+                            
+                        </div>
+
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold text-stars-accent mb-4">NFT 详情</h4>
+                            <div class="grid gap-4 sm:grid-cols-3">
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">铸造价格</div>
+                                    <div class="text-stars-accent font-mono">0 TLOS</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">最大供应量</div>
+                                    <div class="text-stars-accent font-mono">9999</div>
+                                </div>
+                                
+
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">Chain ID</div>
+                                    <div class="text-stars-accent font-mono">41</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">合约版本</div>
+                                    <div class="text-stars-accent font-mono">v1.0.0</div>
+                                </div>
+                                
+
+                                
+                                <div class="p-4 rounded-xl bg-stars-primary/10 border border-stars-accent/10">
+                                    <div class="text-stars-muted text-sm mb-1">每地址限制</div>
+                                    <div class="text-stars-accent font-mono">1 枚</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        
+                        <div class="flex justify-center">
+                            <button id="mintButton2" onclick="mintNFT()" 
+                                    class="px-6 py-3 rounded-xl bg-stars-accent/10 text-stars-accent 
+                                           hover:bg-stars-accent/20 transition-all duration-300">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-cube text-stars-gold"></i>
+                                    <span id="mintButtonText2" class="text-stars-gold">铸造 NFT</span>
+                                </span>
+                                <span id="mintSpinner2" class="hidden">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+                
+                <div class="mb-8">
+                    <div class="bg-stars-secondary/80 backdrop-blur-sm rounded-2xl border border-stars-accent/10 p-4 sm:p-6" id="series-nav">
+                        
+                        <div class="sm:hidden">
+                            <h3 class="text-lg font-bold mb-3">代码专业之道</h3>
+                            <div class="text-stars-muted text-sm mb-4">
+                                您正在阅读 <span class="text-stars-accent">代码专业之道</span> 系列的第 1 篇文章
+                            </div>
+                            <a href="/series/%e4%bb%a3%e7%a0%81%e4%b8%93%e4%b8%9a%e4%b9%8b%e9%81%93" 
+                               class="block w-full text-center px-4 py-2.5 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                      hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                      transition-all duration-300">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="text-sm">查看系列全部文章</span>
+                                    <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        
+                        <div class="hidden sm:block">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-lg font-bold">代码专业之道</h3>
+                                </div>
+                                <a href="/series/%e4%bb%a3%e7%a0%81%e4%b8%93%e4%b8%9a%e4%b9%8b%e9%81%93" 
+                                   class="px-4 py-2 rounded-xl bg-stars-primary/20 border border-stars-accent/20 
+                                          hover:border-stars-accent/30 hover:bg-stars-accent/5 
+                                          transition-all duration-300">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">查看系列全部文章</span>
+                                        <i class="fas fa-arrow-right text-stars-accent/80"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-stars-muted">
+                                您正在阅读 <span class="text-stars-accent">代码专业之道</span> 系列的第 1 篇文章
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24">
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#tdd" 
+                   title="什么是TDD？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是TDD？
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-1" 
+                   title="TDD的三项法则"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    TDD的三项法则
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-2" 
+                   title="为什么要使用TDD？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    为什么要使用TDD？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#tdd-3" 
+           title="TDD是专业主义的保障"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD是专业主义的保障
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-4" 
+           title="TDD可以增加工作效率"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD可以增加工作效率
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-5" 
+           title="TDD让我们无所畏惧"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD让我们无所畏惧
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-6" 
+           title="TDD让代码变得更优雅"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD让代码变得更优雅
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-7" 
+                   title="TDD实践"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    TDD实践
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#tdd-8" 
+           title="使用TDD编写函数"
+           class="toc-link toc-link-child"
+           data-level="3">
+            使用TDD编写函数
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-9" 
+           title="使用TDD编写接口"
+           class="toc-link toc-link-child"
+           data-level="3">
+            使用TDD编写接口
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button id="backToTop" 
+            onclick="scrollToTop()"
+            class="fixed bottom-8 right-8 p-3 rounded-xl
+                   bg-stars-secondary/80 backdrop-blur-sm
+                   border border-stars-accent/20 text-stars-accent
+                   hover:bg-stars-accent/10 hover:scale-110
+                   active:scale-95
+                   transition-all duration-300
+                   opacity-0 invisible
+                   lg:bottom-12 lg:right-12
+                   shadow-lg shadow-stars-accent/5">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    w-full max-w-md p-6 
+                    bg-stars-secondary/90 backdrop-blur-sm 
+                    rounded-xl border border-stars-accent/20">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold text-stars-accent">分享文章</h3>
+                <button onclick="closeModal('shareModal')" 
+                        class="w-8 h-8 flex items-center justify-center rounded-xl
+                               hover:bg-stars-primary/30 text-stars-muted hover:text-stars-accent 
+                               transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="shareToTwitter()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-twitter text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Twitter</span>
+                </button>
+                <button onclick="shareToTelegram()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Telegram</span>
+                </button>
+                <button onclick="shareToReddit()" 
+                        class="flex flex-col items-center gap-2 p-4 rounded-xl
+                               bg-stars-primary/30 hover:bg-stars-accent/20 
+                               text-stars-accent transition-all duration-300
+                               group">
+                    <i class="fab fa-reddit text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">Reddit</span>
+                </button>
+            </div>
+            <button onclick="copyLink()" 
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                           bg-stars-primary/30 hover:bg-stars-accent/20 
+                           text-stars-accent transition-all duration-300
+                           group">
+                <i class="fas fa-link text-lg group-hover:scale-110 transition-transform"></i>
+                <span>复制链接</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="toast" 
+         class="fixed bottom-8 left-1/2 -translate-x-1/2 
+                py-3 px-6 rounded-xl
+                backdrop-blur-sm
+                border border-stars-accent/20
+                shadow-lg
+                transform transition-all duration-300 scale-0 opacity-0
+                flex items-center gap-3
+                bg-stars-accent/10 text-stars-accent">
+        <span id="toastIcon">
+            <i class="fas fa-check-circle text-lg"></i>
+        </span>
+        <span id="toastMessage"></span>
+    </div>
+
+    
+    <script>
+    function share() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function shareToTwitter() {
+        const text = encodeURIComponent(`${document.title}`);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareToTelegram() {
+        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareToReddit() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://reddit.com/submit?url=${url}&title=${title}`, '_blank');
+    }
+
+    function copyLink() {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        try {
+            document.execCommand('copy');
+            window.showToast('链接已复制到剪贴板 ✨');
+            closeModal('shareModal');
+        } catch (err) {
+            window.showToast('复制失败，请手动复制链接');
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            e.target.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+    </script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6');
+        let isScrolling = false;  
+        
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                isScrolling = true;  
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    
+                    link.classList.add('active');
+                    
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    history.pushState(null, '', href);
+                    
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -80% 0px',
+            threshold: [0, 1]  
+        };
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            if (isScrolling) return;  
+
+            
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length === 0) return;
+
+            
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+                const prevY = Math.abs(prev.boundingClientRect.y);
+                const currY = Math.abs(curr.boundingClientRect.y);
+                return prevY < currY ? prev : curr;
+            });
+
+            const id = topEntry.target.id;
+            
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        
+        headings.forEach(heading => {
+            if (heading.id) {
+                headingObserver.observe(heading);
+            }
+        });
+
+        
+        if (window.location.hash) {
+            const targetId = window.location.hash.slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                setTimeout(() => {
+                    const offset = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                    
+                    console.log(targetId);
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${targetId}"]`);
+                    if (activeLink) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }, 100);
+            }
+        }
+    });
+    </script>
+
+    
+    <script>
+    
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    if ('vibrate' in navigator) {
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                navigator.vibrate(10);
+            });
+        });
+    }
+    </script>
+
+    
+    <div class="lg:hidden fixed bottom-8 left-8 z-50" id="tocButton">
+        <button onclick="toggleToc()"
+                class="p-3 rounded-xl bg-stars-secondary/80 backdrop-blur-sm
+                       border border-stars-accent/20 text-stars-accent
+                       hover:bg-stars-accent/10 transition-all duration-300
+                       shadow-lg shadow-stars-accent/5">
+            <i class="fas fa-list-ul"></i>
+        </button>
+    </div>
+
+    
+    <div id="tocDrawer" 
+         class="lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 translate-x-full">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleToc()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3/4 max-w-sm bg-stars-secondary/95 backdrop-blur-sm
+                    border-l border-stars-accent/20 overflow-y-auto
+                    pt-20">
+            <div>
+                
+<div class="table-of-contents-wrapper">
+    <div class="text-lg font-bold text-stars-accent mb-4">目录</div>
+    <nav class="table-of-contents">
+        <ul>
+            
+            <li>
+                <a href="#tdd" 
+                   title="什么是TDD？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    什么是TDD？
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-1" 
+                   title="TDD的三项法则"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    TDD的三项法则
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-2" 
+                   title="为什么要使用TDD？"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    为什么要使用TDD？
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#tdd-3" 
+           title="TDD是专业主义的保障"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD是专业主义的保障
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-4" 
+           title="TDD可以增加工作效率"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD可以增加工作效率
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-5" 
+           title="TDD让我们无所畏惧"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD让我们无所畏惧
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-6" 
+           title="TDD让代码变得更优雅"
+           class="toc-link toc-link-child"
+           data-level="3">
+            TDD让代码变得更优雅
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#tdd-7" 
+                   title="TDD实践"
+                   class="toc-link toc-link-root"
+                   data-level="2">
+                    TDD实践
+                </a>
+                
+                    <ul>
+                        
+    
+    <li>
+        <a href="#tdd-8" 
+           title="使用TDD编写函数"
+           class="toc-link toc-link-child"
+           data-level="3">
+            使用TDD编写函数
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#tdd-9" 
+           title="使用TDD编写接口"
+           class="toc-link toc-link-child"
+           data-level="3">
+            使用TDD编写接口
+        </a>
+        
+    </li>
+    
+
+                    </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+    function toggleToc() {
+        const drawer = document.getElementById('tocDrawer');
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+        } else {
+            drawer.classList.add('translate-x-full');
+        }
+    }
+    </script>
+    
+    
+    <div id="articleData" 
+         data-verification="{&#34;ArweaveId&#34;:&#34;f5pkYOGeFg5UYEwAkqGzFvVVepOWVK5gijX6s78tGBI&#34;,&#34;NftContract&#34;:&#34;0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369&#34;,&#34;Author&#34;:&#34;0x16572b97410200e79AB6c9423F8d9778F0Fb9C54&#34;,&#34;ContentHash&#34;:&#34;0x269e4c75455732104bec4174f8d6bbffc7ed0b1bc5e55fca46c6c23c77c15ad41.0.0&#34;,&#34;NFT&#34;:{&#34;Price&#34;:&#34;0&#34;,&#34;MaxSupply&#34;:9999,&#34;RoyaltyFee&#34;:0,&#34;OnePerAddress&#34;:true,&#34;Version&#34;:&#34;1.0.0&#34;,&#34;ChainId&#34;:41,&#34;TokenSymbol&#34;:&#34;TLOS&#34;}}"
+         data-title="对于TDD(测试驱动开发)的理解与实践"
+         style="display: none;">
+    </div>
+
+    
+    <script>
+    function scrollToVerification() {
+        const verificationSection = document.getElementById('verification');
+        if (verificationSection) {
+            const offset = verificationSection.offsetTop; 
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+    </script>
+
+    
+    <script>
+    function copyHash(hash) {
+        
+        navigator.clipboard.writeText(hash).then(() => {
+            
+            window.showToast('文章内容哈希已复制 ✨');
+        }).catch(() => {
+            window.showToast('复制失败，请手动复制');
+        });
+    }
+    </script>
+</article>
+
+    </main>
+
+    
+    
+<footer class="py-8 mt-12 bg-stars-secondary/30 backdrop-blur-sm border-t border-stars-accent/10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-stars-muted text-sm">
+                © 2025 鲤哥的博客
+            </div>
+
+            
+            <div class="flex items-center gap-2">
+                
+                <a href="/feed.xml" 
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="RSS 订阅">
+                    <i class="fas fa-rss"></i>
+                    <span class="text-sm">RSS</span>
+                </a>
+
+                
+                
+                <a href="https://buttondown.email/lige" 
+                   target="_blank"
+                   class="flex items-center gap-2 px-3 py-1.5 rounded-lg
+                          bg-stars-primary/20 text-stars-muted hover:text-stars-accent
+                          border border-stars-accent/10 hover:border-stars-accent/30
+                          transition-all duration-300"
+                   title="邮件订阅">
+                    <i class="fas fa-envelope"></i>
+                    <span class="text-sm">邮件订阅</span>
+                </a>
+                
+            </div>
+
+            
+            <div class="text-stars-muted text-sm">
+                Powered by <a href="https://github.com/jiangjiax/stars" 
+                            class="text-stars-accent hover:text-stars-gold">Stars</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="/static/dist/main.51ab9f649b4caa7df89d.bundle.js"></script>
+    
+    <script src="/static/dist/nft.ffb817eee87ea86db734.bundle.js"></script>
+    
+</body>
+</html> 

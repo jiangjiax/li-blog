@@ -10,7 +10,7 @@ tags:
     - Layer2
 title: 探索Web3世界：以太坊Layer 2
 verification:
-    arweaveId: ""
+    arweaveId: "l9aRjRPID_HusTo5vIPcVuo8_d_PuhQBb_Cjv480p7Y"
     nftContract: 0x903e48Ca585dBF4dFeb74f2864501feB6f0dF369
     author: 0x16572b97410200e79AB6c9423F8d9778F0Fb9C54
     contentHash: 0x62969dffd258992705d7d8a19140d2f915e5d69951a0e5f51f2706d9021afb201.0.0
