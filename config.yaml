@@ -124,10 +124,10 @@ author:
 
   # 教育背景
   education:
-    - school: "华东理工大学"
-      degree: "本科"
-      major: "计算机技术"
-      year: "2019 - 2021"
+    # - school: "华东理工大学"
+    #   degree: "本科"
+    #   major: "计算机技术"
+    #   year: "2019 - 2021"
 
   # 工作经历
   experience:
